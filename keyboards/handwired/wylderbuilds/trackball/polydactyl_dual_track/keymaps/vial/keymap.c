@@ -55,12 +55,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 };
 
 void init_sensors(void) {
-//    if (sensors_initialized) {
-//        return;
-//    }
-    pointing_device_set_cpi_on_side(false, 8200);
-    pointing_device_set_cpi_on_side(true, 8200);
+    if (sensors_initialized) {
+        return;
+    }
     pointing_device_set_cpi(8200);
+    pointing_device_set_cpi_on_side(false, 8200);
+    pointing_device_set_cpi_on_side(true, 800);
+
     sensors_initialized = true;
 }
 
