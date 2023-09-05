@@ -353,12 +353,8 @@ void charybdis_config_sync_handler(uint8_t initiator2target_buffer_size, const v
 }
 
 void keyboard_post_init_kb(void) {
-    pointing_device_set_cpi(8200);
-    if (is_keyboard_left()) {
-        pointing_device_set_cpi_on_side(true, 800);
-    } else {
-        pointing_device_set_cpi_on_side(false, 8200);
-    }
+//    pointing_device_set_cpi(8200);
+    maybe_update_pointing_device_cpi(&g_charybdis_config);
     transaction_register_rpc(RPC_ID_KB_CONFIG_SYNC, charybdis_config_sync_handler);
 
     keyboard_post_init_user();
