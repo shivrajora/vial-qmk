@@ -1,12 +1,12 @@
 {
-  "keyboard_name": "Dactyl-Manuform Wyld Trackball (4x6_3_track)",
+  "keyboard_name": "Dactyl-Manuform Wyld Whole Dual Trackball (4x6_3_all_dual_track)",
   "manufacturer": "wylderbuilds",
   "url": "https://wylderbuilds.com",
   "maintainer": "qmk",
   "processor": "RP2040",
   "usb": {
     "vid": "0x9953",
-    "pid": "0x0023",
+    "pid": "0x0058",
     "device_version": "0.0.1"
   },
   "width": 18,
@@ -69,33 +69,8 @@
           "y": 0.5
         },
         {
-          "label": "0,0",
-          "x": 7.25,
-          "y": 0.5
-        },
-        {
-          "label": "0,1",
-          "x": 8.25,
-          "y": 0.5
-        },
-        {
-          "label": "1,0",
-          "x": 10.5,
-          "y": 0.5
-        },
-        {
-          "label": "1,1",
-          "x": 11.5,
-          "y": 0.5
-        },
-        {
           "label": "5,4",
           "x": 16.75,
-          "y": 0.5
-        },
-        {
-          "label": "5,5",
-          "x": 17.75,
           "y": 0.5
         },
         {
@@ -139,6 +114,11 @@
           "y": 1
         },
         {
+          "label": "5,5",
+          "x": 19.25,
+          "y": 1
+        },
+        {
           "label": "1,0",
           "x": 1,
           "y": 1.5
@@ -146,16 +126,6 @@
         {
           "label": "1,1",
           "x": 2,
-          "y": 1.5
-        },
-        {
-          "label": "4,2",
-          "x": 7.75,
-          "y": 1.5
-        },
-        {
-          "label": "9,3",
-          "x": 11,
           "y": 1.5
         },
         {
@@ -285,8 +255,8 @@
         },
         {
           "label": "8,5",
-          "x": 17.75,
-          "y": 3.5
+          "x": 19.25,
+          "y": 4
         },
         {
           "label": "4,3",
@@ -304,7 +274,7 @@
           "y": 3.5
         },
         {
-          "label": "9,2",
+          "label": "9,0",
           "x": 11.5,
           "y": 6
         },
@@ -314,7 +284,7 @@
           "y": 6
         },
         {
-          "label": "9,0",
+          "label": "9,2",
           "x": 13.5,
           "y": 6
         }

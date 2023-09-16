@@ -190,9 +190,6 @@ static void check_drag(report_mouse_t* mouse_report) {
 }
 
 report_mouse_t pointing_device_task_combined_user(report_mouse_t left_report, report_mouse_t right_report) {
-#ifdef CONSOLE_ENABLE
-    print("in pointing device task combined user\n");
-#endif
     check_drag(&left_report);
 //    left_report.h = left_report.x;
 //    left_report.v = left_report.y;

@@ -22,11 +22,7 @@
 
 
 enum charybdis_keycodes {
-#        ifdef VIA_ENABLE
-    POINTER_DEFAULT_DPI_FORWARD = 200,
-#        else
-    POINTER_DEFAULT_DPI_FORWARD = SAFE_RANGE,
-#        endif  // VIA_ENABLE
+    POINTER_DEFAULT_DPI_FORWARD = QK_KB_0,
     POINTER_DEFAULT_DPI_REVERSE,
     POINTER_SNIPING_DPI_FORWARD,
     POINTER_SNIPING_DPI_REVERSE,
@@ -34,7 +30,6 @@ enum charybdis_keycodes {
     SNIPING_MODE_TOGGLE,
     DRAGSCROLL_MODE,
     DRAGSCROLL_MODE_TOGGLE,
-    KEYMAP_SAFE_RANGE,
 };
 #        define CHARYBDIS_SAFE_RANGE KEYMAP_SAFE_RANGE
 #        define DPI_MOD POINTER_DEFAULT_DPI_FORWARD
@@ -104,6 +99,9 @@ void charybdis_set_pointer_sniping_enabled(bool enable);
 
 /** \brief Whether drag-scroll is enabled. */
 bool charybdis_get_pointer_dragscroll_enabled(void);
+
+/** calculate drag scroll on specific mouse report */
+void check_drag_scroll(report_mouse_t* mouse_report);
 
 /**
  * \brief Enable/disable drag-scroll mode.
