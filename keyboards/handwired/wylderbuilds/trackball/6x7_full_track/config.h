@@ -11,7 +11,7 @@
 // Dactyl Manuform Hotswap
 #pragma once
 
-#include "config_common.h"
+//#include "config_common.h"
 // Basic Config
 
 #define SPLIT_HAND_PIN      GP26  // high = left, low = right
@@ -22,9 +22,13 @@
 #define POINTING_DEVICE_RIGHT
 #define PMW33XX_CS_PIN GP21
 #define POINTING_DEVICE_TASK_THROTTLE_MS 1
-#define PMW33XX_LIFTOFF_DISTANCE 0x03
+#define PMW33XX_LIFTOFF_DISTANCE 0x02
 
-//#define POINTING_DEVICE_DEBUG
+#define POINTING_DEVICE_AUTO_MOUSE_ENABLE
+// only required if not setting mouse layer elsewhere
+#define AUTO_MOUSE_DEFAULT_LAYER 3
+
+#define DYNAMIC_KEYMAP_LAYER_COUNT 5
 
 // Using Serial instead of I2C
 #define SERIAL_USART_FULL_DUPLEX
@@ -40,12 +44,7 @@
 #define RP2040_BOOTLOADER_DOUBLE_TAP_RESET
 #define RP2040_BOOTLOADER_DOUBLE_TAP_RESET_TIMEOUT 200U
 #define RP2040_BOOTLOADER_DOUBLE_TAP_RESET_LED_MASK 0U
-// More RP2040 Settings
-#define RP2040_FLASH_AT25SF128A
-#define RP2040_FLASH_GD25Q64CS
-#define RP2040_FLASH_W25X10CL
-#define RP2040_FLASH_IS25LP080
-#define RP2040_FLASH_GENERIC_03H
+
 /* key matrix size */
 // Rows are doubled-up
 #define MATRIX_ROWS 14
@@ -64,7 +63,7 @@
 // End of Basic Config
 
 #ifdef OLED_ENABLE
-#define I2C_DRIVER I2CD1
+#define I2C_DRIVER I2CD0
 #define I2C1_SDA_PIN GP16
 #define I2C1_SCL_PIN GP17
 #define RGBLIGHT_LAYERS
@@ -82,14 +81,24 @@
 #define OLED_FADE_OUT_INTERVAL 0
 #endif
 
+#ifdef ENCODER_ENABLE
+#define ENCODERS_PAD_A { }
+#define ENCODERS_PAD_B { }
+#define ENCODER_RESOLUTIONS { 2 }
+#define ENCODERS_PAD_A_RIGHT { GP27 }
+#define ENCODERS_PAD_B_RIGHT { GP28 }
+#define ENCODER_RESOLUTIONS_RIGHT { 2 }
+#endif
+
 #ifdef RGBLIGHT_ENABLE
 //#define WS2812_PIO_USE_PIO1
 //#define WS2812_PIO_USE_PIO1
-#define RGB_DI_PIN GP28
+#define RGBLIGHT_LAYERS
+#define RGB_DI_PIN GP22 // can use trackball jack if not used
 //#define WS2812_EXTERNAL_PULLUP
-#define RGBLED_NUM 24
-//#define DRIVER_LED_TOTAL 24
-#define RGBLED_SPLIT { 12, 12 }
+#define RGBLED_NUM 36
+//#define DRIVER_LED_TOTAL 34
+#define RGBLED_SPLIT { 18, 18 }
 #define RGBLIGHT_SPLIT
 #define RGBLIGHT_EFFECT_RGB_TEST
 #define RGBLIGHT_EFFECT_BREATHING
