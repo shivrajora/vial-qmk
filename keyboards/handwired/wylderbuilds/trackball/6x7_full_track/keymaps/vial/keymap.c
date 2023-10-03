@@ -104,7 +104,7 @@ const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][2] = {
     [_QWERTY] =  { ENCODER_CCW_CW(KC_MS_WH_UP, KC_MS_WH_DOWN) },
     [_LOWER] =   { ENCODER_CCW_CW(KC_VOLU, KC_VOLD) },
     [_RAISE] =   { ENCODER_CCW_CW(KC_VOLU, KC_VOLD) },
-    [_MOUSE] =    { ENCODER_CCW_CW(KC_VOLU, KC_VOLD) },
+    [_MOUSE] =   { ENCODER_CCW_CW(KC_VOLU, KC_VOLD) },
     [4] =        { ENCODER_CCW_CW(KC_VOLU, KC_VOLD) }
 };
 //#endif
@@ -112,16 +112,16 @@ const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][2] = {
 
 #ifdef RGBLIGHT_ENABLE
 const rgblight_segment_t PROGMEM querty_layer[] = RGBLIGHT_LAYER_SEGMENTS(
-    {9, 3, HSV_RED},       // Light 4 LEDs, starting with LED 6
-    {21, 3, HSV_RED}      // Light 4 LEDs, starting with LED 6
+    {15, 3, HSV_RED},       // Light 4 LEDs, starting with LED 6
+    {33, 3, HSV_RED}      // Light 4 LEDs, starting with LED 6
 );
 const rgblight_segment_t PROGMEM lower_layer[] = RGBLIGHT_LAYER_SEGMENTS(
-    {9, 3, HSV_BLUE},
-    {21, 3, HSV_BLUE}
+    {15, 3, HSV_BLUE},
+    {33, 3, HSV_BLUE}
 );
 const rgblight_segment_t PROGMEM raise_layer[] = RGBLIGHT_LAYER_SEGMENTS(
-    {9, 3, HSV_YELLOW},
-    {21, 3, HSV_YELLOW}
+    {15, 3, HSV_YELLOW},
+    {33, 3, HSV_YELLOW}
 );
 
 const rgblight_segment_t* const PROGMEM my_rgb_layers[] = RGBLIGHT_LAYERS_LIST(
@@ -141,8 +141,8 @@ layer_state_t default_layer_state_set_user(layer_state_t state) {
 }
 
 layer_state_t layer_state_set_user(layer_state_t state) {
-    rgblight_set_layer_state(2, layer_state_cmp(state, _LOWER));
-    rgblight_set_layer_state(3, layer_state_cmp(state, _RAISE));
+    rgblight_set_layer_state(1, layer_state_cmp(state, _LOWER));
+    rgblight_set_layer_state(2, layer_state_cmp(state, _RAISE));
     return state;
 }
 

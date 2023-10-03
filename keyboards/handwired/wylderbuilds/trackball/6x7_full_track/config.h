@@ -91,10 +91,11 @@
 #endif
 
 #ifdef RGBLIGHT_ENABLE
+#define WS2812_PIO_USE_PIO1
 //#define WS2812_PIO_USE_PIO1
 //#define WS2812_PIO_USE_PIO1
 #define RGBLIGHT_LAYERS
-#define RGB_DI_PIN GP22 // can use trackball jack if not used
+#define WS2812_DI_PIN GP22 // can use trackball jack if not used
 //#define WS2812_EXTERNAL_PULLUP
 #define RGBLED_NUM 36
 //#define DRIVER_LED_TOTAL 34
@@ -108,7 +109,7 @@
 #define RGBLIGHT_HUE_STEP 8
 #define RGBLIGHT_SAT_STEP 8
 #define RGBLIGHT_VAL_STEP 17
-#define RGBLIGHT_LIMIT_VAL 255
+#define RGBLIGHT_LIMIT_VAL 100
 //#define STM32_SYSCLK KINETIS_SYSCLK_FREQUENCY
 #define NOP_FUDGE 0.4  // may not be needed if ws driver loaded
 #endif
