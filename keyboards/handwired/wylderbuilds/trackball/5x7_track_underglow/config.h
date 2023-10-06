@@ -1,7 +1,7 @@
 // Dactyl Manuform Hotswap
 #pragma once
 
-#include "config_common.h"
+//#include "config_common.h"
 // Basic Config
 
 #ifndef WYLD_QMK_FIRMWARE_CONFIG_H
@@ -15,13 +15,15 @@
 // UNDERGLOW
 // WS2812 RGB LED strip input and number of LEDs
 #ifdef RGBLIGHT_ENABLE
+#define WS2812_PIO_USE_PIO1
 //#define WS2812_PIO_USE_PIO1
 //#define WS2812_PIO_USE_PIO1
-#define RGB_DI_PIN GP21
+#define RGBLIGHT_LAYERS
+#define WS2812_DI_PIN GP22 // can use trackball jack if not used
 //#define WS2812_EXTERNAL_PULLUP
-#define RGBLED_NUM 24
+#define RGBLED_NUM 36
 //#define DRIVER_LED_TOTAL 34
-#define RGBLED_SPLIT { 12, 12 }
+#define RGBLED_SPLIT { 18, 18 }
 #define RGBLIGHT_SPLIT
 #define RGBLIGHT_EFFECT_RGB_TEST
 #define RGBLIGHT_EFFECT_BREATHING
@@ -31,9 +33,9 @@
 #define RGBLIGHT_HUE_STEP 8
 #define RGBLIGHT_SAT_STEP 8
 #define RGBLIGHT_VAL_STEP 17
-#define RGBLIGHT_LIMIT_VAL 255
+#define RGBLIGHT_LIMIT_VAL 100
 //#define STM32_SYSCLK KINETIS_SYSCLK_FREQUENCY
-//#define NOP_FUDGE 0.4
+#define NOP_FUDGE 0.4  // may not be needed if ws driver loaded
 #endif
 
 // Using Serial instead of I2C
@@ -54,8 +56,8 @@
 #define MATRIX_ROWS 12
 #define MATRIX_COLS 7
 
-#define MATRIX_COL_PINS { GP3, GP4, GP5, GP6, GP7, GP8, GP9 }
-#define MATRIX_ROW_PINS { GP10, GP11, GP12, GP13, GP14, GP15 }
+#define MATRIX_COL_PINS { GP2, GP3, GP4, GP5, GP6, GP7, GP8 }
+#define MATRIX_ROW_PINS { GP9, GP10, GP11, GP12, GP14, GP13 }
 
 #define DIODE_DIRECTION COL2ROW
 
@@ -63,9 +65,15 @@
 #define ROTATIONAL_TRANSFORM_ANGLE  -25
 #define POINTING_DEVICE_INVERT_Y
 #define POINTING_DEVICE_RIGHT
-#define PMW33XX_CS_PIN GP22
+#define PMW33XX_CS_PIN GP21
 #define POINTING_DEVICE_TASK_THROTTLE_MS 1
-#define PMW33XX_LIFTOFF_DISTANCE 0x05
+#define PMW33XX_LIFTOFF_DISTANCE 0x03
+
+#define POINTING_DEVICE_AUTO_MOUSE_ENABLE
+// only required if not setting mouse layer elsewhere
+#define AUTO_MOUSE_DEFAULT_LAYER 3
+
+#define DYNAMIC_KEYMAP_LAYER_COUNT 5
 
 #define SPLIT_TRANSACTION_IDS_KB RPC_ID_KB_CONFIG_SYNC
 
@@ -78,9 +86,10 @@
 // GP19 -- MOSI pin
 // GP18 -- SCK pin clock Driver
 #ifdef OLED_ENABLE
-#define I2C_DRIVER I2CD1
-#define I2C1_SDA_PIN GP12
-#define I2C1_SCL_PIN GP13
+#define I2C_DRIVER I2CD0
+#define I2C1_SDA_PIN GP16
+#define I2C1_SCL_PIN GP17
+#define RGBLIGHT_LAYERS
 // OLED Options
 #define SPLIT_OLED_ENABLE
 #define SPLIT_WPM_ENABLE
