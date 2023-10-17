@@ -1,7 +1,7 @@
 // Copyright 2022 Matthew Dews (@matthew-dews)
 // SPDX-License-Identifier: GPL-2.0-or-later
 #include QMK_KEYBOARD_H
-#include "6x7_track.h"
+#include "../../6x7_track.h"
 enum custom_layer {
     _QWERTY,
     _LOWER,
