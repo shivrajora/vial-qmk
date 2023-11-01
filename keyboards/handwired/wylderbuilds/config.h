@@ -19,7 +19,7 @@
 
 /* Set 0 if debouncing isn't needed */
 #define DEBOUNCE 5
-#define DYNAMIC_KEYMAP_LAYER_COUNT 5
+//#define DYNAMIC_KEYMAP_LAYER_COUNT 5
 
 /* serial.c configuration for split keyboard */
 

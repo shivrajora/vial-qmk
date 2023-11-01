@@ -1,25 +1,18 @@
 // Dactyl Manuform Hotswap
 #pragma once
 
-#include "config_common.h"
+//#include "config_common.h"
 // Basic Config
 
 #ifndef WYLD_QMK_FIRMWARE_CONFIG_H
 #define WYLD_QMK_FIRMWARE_CONFIG_H
 
 #endif // WYLD_QMK_FIRMWARE_CONFIG_H
-//#define BOOTMAGIC_LITE_ROW 0        // TOP RIGHT KEY ON RIGHT SIDE, TOP LEFT KEY ON LEFT SIDE
-//#define BOOTMAGIC_LITE_COLUMN 5
 
-//#define PRODUCT_ID 0x0002
 
 #define USE_SERIAL
 #define SPLIT_HAND_PIN      GP26  // high = left, low = right
 #define SPLIT_LAYER_STATE_ENABLE
-//#define	SPLIT_HAND_PIN_LOW_IS_LEFT
-//#define SPLIT_HAND_MATRIX_GRID GP9, GP8
-//#define MASTER_RIGHT
-//#define MASTER_LEFT
 
 
 #define USE_SERIAL
@@ -41,7 +34,7 @@
 #define MATRIX_COLS 6
 
 #define MATRIX_COL_PINS { GP2, GP3, GP4, GP5, GP6, GP7 }
-#define MATRIX_ROW_PINS { GP9, GP10, GP11, GP12, GP13, GP14 }
+#define MATRIX_ROW_PINS { GP9, GP10, GP11, GP12, GP13, GP8 }
 
 #define DIODE_DIRECTION COL2ROW
 
@@ -65,9 +58,14 @@
 #define ENCODERS_PAD_B { }
 #define ENCODER_RESOLUTIONS { }
 
-#define ENCODERS_PAD_A_RIGHT { GP27 }
-#define ENCODERS_PAD_B_RIGHT { GP28 }
-#define ENCODER_RESOLUTIONS_RIGHT { 2 }
+#ifdef ENCODER_ENABLE
+#define ENCODERS_PAD_A { GP15, GP22 }
+#define ENCODERS_PAD_B { GP14, GP28 }
+#define ENCODER_RESOLUTIONS { 2 }
+//#define ENCODERS_PAD_A_RIGHT { GP26 }
+//#define ENCODERS_PAD_B_RIGHT { GP27 }
+//#define ENCODER_RESOLUTIONS_RIGHT { 2 }
+#endif
 
 //// Sensor Notes ////
 //// Pi Pico pins ////
@@ -93,7 +91,7 @@
 #define SPLIT_MODS_ENABLE
 //// OLED Pins and Driver
 #ifdef OLED_ENABLE
-#define I2C_DRIVER I2CD1
+#define I2C_DRIVER I2CD0
 #define I2C1_SDA_PIN GP16
 #define I2C1_SCL_PIN GP17
 // OLED Options
