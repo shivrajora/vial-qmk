@@ -11,7 +11,7 @@
 
 
 #define USE_SERIAL
-#define SPLIT_HAND_PIN      GP26  // high = left, low = right
+//#define SPLIT_HAND_PIN      GP26  // high = left, low = right
 #define SPLIT_HAND_DETECT   GP0
 #define SPLIT_LAYER_STATE_ENABLE
 
@@ -29,13 +29,13 @@
 
 /* key matrix size */
 // Columns are doubled-up
-#define MATRIX_ROWS 14
-#define MATRIX_COLS 7
+#define MATRIX_ROWS 12
+#define MATRIX_COLS 6
 
 #define MATRIX_ROW_PINS { GP2, GP3, GP8, GP4, GP13, GP9 }
 #define MATRIX_COL_PINS { GP1, GP10, GP11, GP12, GP7, GP6 }
 
-#define DIODE_DIRECTION COL2ROW
+#define DIODE_DIRECTION ROW2COL
 
 #define SPI_SCK_PIN   GP22
 #define SPI_MOSI_PIN  GP23
@@ -56,14 +56,9 @@
 #define CHARYBDIS_MINIMUM_SNIPING_DPI 400
 #define CHARYBDIS_SNIPING_DPI_CONFIG_STEP 200
 
-//// Rotary Encoder ////
-#define ENCODERS_PAD_A { }
-#define ENCODERS_PAD_B { }
-#define ENCODER_RESOLUTIONS { }
-
 #ifdef ENCODER_ENABLE
-#define ENCODERS_PAD_A { GP15, GP22 }
-#define ENCODERS_PAD_B { GP14, GP28 }
+#define ENCODERS_PAD_A { GP16 }
+#define ENCODERS_PAD_B { GP18 }
 #define ENCODER_RESOLUTIONS { 2 }
 //#define ENCODERS_PAD_A_RIGHT { GP26 }
 //#define ENCODERS_PAD_B_RIGHT { GP27 }
