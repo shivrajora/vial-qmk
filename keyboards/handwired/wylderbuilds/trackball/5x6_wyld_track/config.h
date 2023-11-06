@@ -12,15 +12,14 @@
 
 #define USE_SERIAL
 //#define SPLIT_HAND_PIN      GP26  // high = left, low = right
-#define SPLIT_HAND_DETECT   GP0
+#define SPLIT_HAND_PIN   GP0
 #define SPLIT_LAYER_STATE_ENABLE
 
 #define USB_VBUS_PIN GP27
-#define USE_SERIAL
 #define SERIAL_USART_TX_PIN GP28
 #define SERIAL_PIO_USE_PIO0
 //#define SERIAL_USART_TIMEOUT     100  // USART driver timeout. default 100
-//#define SERIAL_USART_SPEED 921600
+//#define SERIAL_USART_SPEED 921600.......
 //#define SERIAL_USART_PIN_SWAP
 
 #define RP2040_BOOTLOADER_DOUBLE_TAP_RESET
@@ -74,18 +73,21 @@
 // GP18 -- SCK pin clock
 // GND  -- GND
 
-// WS2812 RGB LED strip input and number of LEDs
-//#ifdef RGBLIGHT_ENABLE
-//#define RGB_DI_PIN GP17
-//#define RGBLED_NUM 34
-////#define DRIVER_LED_TOTAL 34
-//#define RGBLED_SPLIT { 17, 17 }
-//#define STM32_SYSCLK KINETIS_SYSCLK_FREQUENCY
-//#define NOP_FUDGE 0.4
-//#endif
+#ifdef RGB_MATRIX_ENABLE
+#    define WS2812_PIO_USE_PIO1 // Force the usage of PIO1 peripheral, by default the WS2812 implementation uses the PIO0 peripheral
+#    define SPLIT_TRANSPORT_MIRROR
+#    define RGB_MATRIX_DEFAULT_MODE RGB_MATRIX_SOLID_REACTIVE // Sets the default mode, if none has been set
+#    define RGB_MATRIX_DEFAULT_HUE 33 // Sets the default hue value, if none has been set
+#    define RGB_MATRIX_DEFAULT_SAT 255 // Sets the default saturation value, if none has been set
+#    define RGB_MATRIX_DEFAULT_SPD 50
+#    define RGB_MATRIX_DEFAULT_VAL RGB_MATRIX_MAXIMUM_BRIGHTNESS
+#    define RGB_DISABLE_WHEN_USB_SUSPENDED
+#    define RGB_MATRIX_KEYPRESSES
+#    define RGB_MATRIX_FRAMEBUFFER_EFFECTS
+#endif
 
 //// OLED Pins and Driver
-#define SPLIT_OLED_ENABLE
+//#define SPLIT_OLED_ENABLE
 #define SPLIT_MODS_ENABLE
 //// OLED Pins and Driver
 #ifdef OLED_ENABLE
