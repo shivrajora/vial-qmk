@@ -51,7 +51,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______,_______,_______,_______,_______,_______,               _______,_______,_______,_______,_______,_______,
                                           _______,KC_BTN1,KC_BTN3,     _______,
                                           SNIPING,DRGSCRL,             _______,
-                                                               _______,QK_BOOT
+                                                               _______,_______
         ),
     [4] = LAYOUT_4x6(
         _______,_______,_______,_______,_______,_______,               _______,_______,_______,_______,_______,_______,
@@ -176,7 +176,58 @@ bool oled_task_user(void) {
 }
 #endif
 
+#ifdef RGBLIGHT_ENABLE
+const rgblight_segment_t PROGMEM querty_layer[] = RGBLIGHT_LAYER_SEGMENTS(
+    {9, 3, HSV_RED},       // Light 4 LEDs, starting with LED 6
+    {21, 3, HSV_RED}      // Light 4 LEDs, starting with LED 6
+);
+const rgblight_segment_t PROGMEM lower_layer[] = RGBLIGHT_LAYER_SEGMENTS(
+    {9, 3, HSV_BLUE},
+    {21, 3, HSV_BLUE}
+);
+const rgblight_segment_t PROGMEM raise_layer[] = RGBLIGHT_LAYER_SEGMENTS(
+    {9, 3, HSV_YELLOW},
+    {21, 3, HSV_YELLOW}
+);
+const rgblight_segment_t PROGMEM mouse_layer[] = RGBLIGHT_LAYER_SEGMENTS(
+    {9, 3, HSV_GREEN},
+    {21, 3, HSV_GREEN}
+);
+const rgblight_segment_t PROGMEM play_layer[] = RGBLIGHT_LAYER_SEGMENTS(
+    {9, 3, HSV_PURPLE},
+    {21, 3, HSV_PURPLE}
+);
+const rgblight_segment_t* const PROGMEM my_rgb_layers[] = RGBLIGHT_LAYERS_LIST(
+    querty_layer,    // Overrides caps lock layer
+    lower_layer,    // Overrides other layers
+    raise_layer,
+    mouse_layer,
+    play_layer
+    // Overrides other layers
+);
 
+//bool led_update_user(led_t led_state) {
+//    rgblight_set_layer_state(0, led_state.caps_lock);
+//    return true;
+//}
+
+layer_state_t default_layer_state_set_user(layer_state_t state) {
+    rgblight_set_layer_state(0, layer_state_cmp(state, _QWERTY));
+    return state;
+}
+
+layer_state_t layer_state_set_user(layer_state_t state) {
+    rgblight_set_layer_state(1, layer_state_cmp(state, _LOWER));
+    rgblight_set_layer_state(2, layer_state_cmp(state, _RAISE));
+    rgblight_set_layer_state(3, layer_state_cmp(state, _MOUSE));
+    rgblight_set_layer_state(4, layer_state_cmp(state, 4));
+    return state;
+}
+
+
+#endif
+
+//    rgblight_enable();
 
 void keyboard_post_init_user(void) {
 #ifdef CONSOLE_ENABLE
@@ -190,4 +241,13 @@ void keyboard_post_init_user(void) {
     debug_keyboard=false;
     debug_mouse=false;
 #endif
+#ifdef RGBLIGHT_ENABLE
+    rgblight_layers = my_rgb_layers;
+
 }
+//    rgblight_layers = my_rgb_layers;
+//    rgblight_enable_noeeprom(); // Enables RGB, without saving settings
+//    rgblight_sethsv_noeeprom_cyan();
+//    rgblight_mode_noeeprom(RGBLIGHT_MODE_STATIC_LIGHT);
+#endif
+

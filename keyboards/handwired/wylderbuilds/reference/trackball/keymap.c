@@ -90,6 +90,12 @@ void pointing_device_init_user(void) {
     set_auto_mouse_enable(true);
 }
 
+// Ensures only the pointing device activates mouse layer on dual track builds
+// And also prevents dragscroll from activating it
+bool auto_mouse_activation(report_mouse_t mouse_report) {
+    return mouse_report.x != 0 || mouse_report.y != 0 || mouse_report.buttons;
+}
+
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case WYLD_AUTO_MS_TOG:
