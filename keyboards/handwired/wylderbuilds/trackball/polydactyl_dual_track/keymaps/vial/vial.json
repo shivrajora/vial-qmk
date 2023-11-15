@@ -1,4 +1,8 @@
 {
+
+  "vendorId": "0x9953",
+  "productId": "0x0101",
+  "lighting": "vialrgb",
   "matrix": {
     "rows": 14,
     "cols": 7
