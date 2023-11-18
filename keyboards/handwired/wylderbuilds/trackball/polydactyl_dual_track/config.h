@@ -47,7 +47,7 @@
 //#define PMW33XX_LIFTOFF_DISTANCE 0x02
 
 //#define POINTING_DEVICE_DEBUG
-#define USE_SERIAL
+//#define USE_SERIAL
 // Using Serial instead of I2C
 #define SERIAL_USART_FULL_DUPLEX
 #define SERIAL_USART_TX_PIN GP0
@@ -73,11 +73,13 @@
 //#define MATRIX_ROWS 14
 //#define MATRIX_COLS 7
 
-#define MATRIX_COL_PINS { GP2, GP3, GP4, GP5, GP6, GP7, GP8 }
+#define MATRIX_COL_PINS { GP8, GP7, GP6, GP5, GP4, GP3, GP2 }
 #define MATRIX_ROW_PINS { GP9, GP10, GP11, GP12, GP13, GP14, GP15 }
 #define DIODE_DIRECTION COL2ROW
 
-// USE PINS 16 AND 17 TO USE 4 PIN JST, IF AVAILABLE
+#    define SPLIT_LED_STATE_ENABLE
+
+// USE PINS 27 AND 28 TO USE 4 PIN JST, IF AVAILABLE
 #ifdef ENCODER_ENABLE
 #define ENCODERS_PAD_A { GP28 }
 #define ENCODERS_PAD_B { GP27 }
@@ -87,28 +89,31 @@
 #define ENCODER_RESOLUTIONS_RIGHT { 2 }
 #endif
 
-//#    define MASTER_RIGHT
+//// OLED Pins and Driver
+
+#ifdef OLED_ENABLE
 #define SPLIT_OLED_ENABLE
 #define SPLIT_MODS_ENABLE
-//// OLED Pins and Driver
-#ifdef OLED_ENABLE
 #define I2C_DRIVER I2CD0
 #define I2C1_SDA_PIN GP16
 #define I2C1_SCL_PIN GP17
+#define RGBLIGHT_LAYERS
 // OLED Options
 #define SPLIT_OLED_ENABLE
 #define SPLIT_WPM_ENABLE
 #define OLED_DISPLAY_WIDTH 128
 #define OLED_DISPLAY_HEIGHT 32
-//#define OLED_MATRIX_SIZE 512
+#define OLED_MATRIX_SIZE 512
 #define OLED_RESET -1
 #define OLED_DISPLAY_ADDRESS 0x3C
 #define OLED_BRIGHTNESS 255
-//#define OLED_TIMEOUT 32000
+#define OLED_TIMEOUT 32000
 #define OLED_FADE_OUT
-//#define OLED_FADE_OUT_INTERVAL 0
+#define OLED_FADE_OUT_INTERVAL 0
 #endif
+
 #ifdef RGB_MATRIX_ENABLE
+
 #    define RGB_MATRIX_LED_COUNT 88
 #    define WS2812_PIO_USE_PIO1 // Force the usage of PIO1 peripheral, by default the WS2812 implementation uses the PIO0 peripheral
 #    define SPLIT_TRANSPORT_MIRROR

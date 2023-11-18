@@ -23,15 +23,20 @@
   "features": {
     "bootmagic": true,
     "command": false,
-    "console": false,
     "extrakey": true,
     "mousekey": true,
     "nkro": true,
-    "rgb_matrix": true
+    "rgb_matrix": true,
+    "encoder": true
   },
   "matrix_size": {
     "cols": 7,
     "rows": 14
+  },
+  "encoder": {
+    "rotary": [
+      { "pin_a": "GP27", "pin_b": "GP28", "resolution": 4 }
+    ]
   },
   "rgb_matrix": {
     "driver": "ws2812",

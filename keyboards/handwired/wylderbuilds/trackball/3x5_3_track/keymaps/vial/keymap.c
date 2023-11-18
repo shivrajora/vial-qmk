@@ -91,10 +91,10 @@ bool oled_task_user(void) {
             // Or use the write_ln shortcut over adding '\n' to the end of your string
             oled_write_ln_P(PSTR("Undefined"), false);
     }
-    oled_set_cursor(2, 7);
-    oled_write_P(PSTR("WPM "), false);
-    oled_set_cursor(1, 8);
-    oled_write(get_u8_str(get_current_wpm(), ' '), false);
+//    oled_set_cursor(2, 7);
+//    oled_write_P(PSTR("WPM "), false);
+//    oled_set_cursor(1, 8);
+//    oled_write(get_u8_str(get_current_wpm(), ' '), false);
     // Host Keyboard LED Status
 
     oled_set_cursor(0, 9);

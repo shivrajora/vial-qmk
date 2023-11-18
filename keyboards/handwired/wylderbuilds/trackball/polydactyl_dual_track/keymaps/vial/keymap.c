@@ -98,10 +98,10 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
 #if defined(ENCODER_MAP_ENABLE)
 
 const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][2] = {
-    [_QWERTY] =   { ENCODER_CCW_CW(KC_MS_WH_DOWN, KC_MS_WH_UP) },
-    [_LOWER] =   { ENCODER_CCW_CW(KC_VOLD, KC_VOLU) },
-    [_RAISE] =   { ENCODER_CCW_CW(KC_VOLD, KC_VOLU) },
-    [_MOUSE] =   { ENCODER_CCW_CW(KC_VOLD, KC_VOLU) }
+    [_QWERTY] =  { ENCODER_CCW_CW(KC_VOLD, KC_VOLU), ENCODER_CCW_CW(KC_MS_WH_UP, KC_MS_WH_DOWN) },
+    [_LOWER] =   { ENCODER_CCW_CW(KC_VOLD, KC_VOLU), ENCODER_CCW_CW(KC_MS_WH_UP, KC_MS_WH_DOWN) },
+    [_RAISE] =   { ENCODER_CCW_CW(KC_VOLD, KC_VOLU), ENCODER_CCW_CW(KC_MS_WH_UP, KC_MS_WH_DOWN) },
+    [_MOUSE] =   { ENCODER_CCW_CW(KC_VOLD, KC_VOLU), ENCODER_CCW_CW(KC_MS_WH_UP, KC_MS_WH_DOWN) },
 };
 
 #endif

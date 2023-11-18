@@ -85,8 +85,8 @@
 #define ENCODERS_PAD_A { }
 #define ENCODERS_PAD_B { }
 #define ENCODER_RESOLUTIONS { 2 }
-#define ENCODERS_PAD_A_RIGHT { GP16 }
-#define ENCODERS_PAD_B_RIGHT { GP17 }
+#define ENCODERS_PAD_A_RIGHT { GP27 }
+#define ENCODERS_PAD_B_RIGHT { GP28 }
 #define ENCODER_RESOLUTIONS_RIGHT { 2 }
 #endif
 
