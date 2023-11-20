@@ -30,7 +30,7 @@
 #define MATRIX_ROWS 12
 #define MATRIX_COLS 7
 
-#define MATRIX_COL_PINS { GP2, GP3, GP4, GP5, GP6, GP7, GP8 }
+#define MATRIX_COL_PINS { GP8, GP7, GP6, GP5, GP4, GP3, GP2 }
 #define MATRIX_ROW_PINS { GP9, GP10, GP11, GP12, GP13, GP14 }
 
 #define DIODE_DIRECTION COL2ROW
@@ -45,7 +45,11 @@
 
 #define SPLIT_TRANSACTION_IDS_KB RPC_ID_KB_CONFIG_SYNC
 
+#define POINTING_DEVICE_AUTO_MOUSE_ENABLE
+// only required if not setting mouse layer elsewhere
+#define AUTO_MOUSE_DEFAULT_LAYER 3
 
+#define DYNAMIC_KEYMAP_LAYER_COUNT 5
 //// Sensor Notes ////
 //// Pi Pico pins ////
 // 3V3  -- Power (not 3v3_EN)
