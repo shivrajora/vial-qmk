@@ -135,7 +135,11 @@ static void check_drag(report_mouse_t* mouse_report) {
 
 
 void pointing_device_init_user(void) {
-    set_auto_mouse_enable(false);         // always required before the auto mouse feature will work
+    set_auto_mouse_enable(false);
+#ifdef POINTING_DEVICE_COMBINED
+    pointing_device_set_cpi_on_side(true, CHARYBDIS_DRAGSCROLL_DPI); // LEFT
+    pointing_device_set_cpi_on_side(false, 2000);  // RIGHT
+#endif// always required before the auto mouse feature will work
 }
 
 report_mouse_t pointing_device_task_combined_kb(report_mouse_t left_report, report_mouse_t right_report) {
