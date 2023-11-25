@@ -46,13 +46,13 @@ void keyboard_post_init_user(void) {
     rgblight_layers = my_rgb_layers;
 #endif
 
-#ifdef #define POINTING_DEVICE_COMBINED
+#ifdef POINTING_DEVICE_COMBINED
     pointing_device_set_cpi_on_side(true, CHARYBDIS_DRAGSCROLL_DPI); // LEFT
     pointing_device_set_cpi_on_side(false, 2000);  // RIGHT
 #endif
 }
 
-#ifdef #define POINTING_DEVICE_COMBINED
+#ifdef POINTING_DEVICE_COMBINED
 static void check_drag(report_mouse_t* mouse_report) {
     static int16_t scroll_buffer_x = 0;
     static int16_t scroll_buffer_y = 0;
@@ -85,7 +85,7 @@ report_mouse_t pointing_device_task_combined_user(report_mouse_t left_report, re
 }
 #endif
 
-#ifdef #define POINTING_DEVICE_AUTO_MOUSE_ENABLE
+#ifdef POINTING_DEVICE_AUTO_MOUSE_ENABLE
 void pointing_device_init_user(void) {
     set_auto_mouse_enable(true);
 }
