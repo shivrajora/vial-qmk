@@ -292,6 +292,10 @@ const rgblight_segment_t PROGMEM querty_layer[] = RGBLIGHT_LAYER_SEGMENTS(
     {15, 3, HSV_RED},       // Light 4 LEDs, starting with LED 6
     {33, 3, HSV_RED}      // Light 4 LEDs, starting with LED 6
 );
+const rgblight_segment_t PROGMEM colemak_layer[] = RGBLIGHT_LAYER_SEGMENTS(
+    {15, 3, HSV_PURPLE},       // Light 4 LEDs, starting with LED 6
+    {33, 3, HSV_PURPLE}      // Light 4 LEDs, starting with LED 6
+);
 const rgblight_segment_t PROGMEM lower_layer[] = RGBLIGHT_LAYER_SEGMENTS(
     {15, 3, HSV_BLUE},
     {33, 3, HSV_BLUE}
@@ -307,6 +311,7 @@ const rgblight_segment_t PROGMEM mouse_layer[] = RGBLIGHT_LAYER_SEGMENTS(
 
 const rgblight_segment_t* const PROGMEM my_rgb_layers[] = RGBLIGHT_LAYERS_LIST(
     querty_layer,    // Overrides caps lock layer
+    colemak_layer,
     lower_layer,    // Overrides other layers
     raise_layer,     // Overrides other layers
     mouse_layer
@@ -318,9 +323,10 @@ layer_state_t default_layer_state_set_user(layer_state_t state) {
 }
 
 layer_state_t layer_state_set_user(layer_state_t state) {
-    rgblight_set_layer_state(1, layer_state_cmp(state, _LOWER));
-    rgblight_set_layer_state(2, layer_state_cmp(state, _RAISE));
-    rgblight_set_layer_state(3, layer_state_cmp(state, _MOUSE));
+    rgblight_set_layer_state(1, layer_state_cmp(state, _COLEMAK));
+    rgblight_set_layer_state(2, layer_state_cmp(state, _LOWER));
+    rgblight_set_layer_state(3, layer_state_cmp(state, _RAISE));
+    rgblight_set_layer_state(4, layer_state_cmp(state, _MOUSE));
     return state;
 }
 #endif
