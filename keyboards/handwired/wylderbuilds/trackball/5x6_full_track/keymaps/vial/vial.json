@@ -6,7 +6,7 @@
   "layouts": {
     "keymap": [
       {
-        "name": "Wylderbuilds 5x6 Standard Track"
+        "name": "Wylderbuilds 5x6 Full Track"
       },
       [
         {
@@ -155,6 +155,20 @@
       ],
       [
         {
+          "y": -0.75,
+          "x": 1
+        },
+        "4,0",
+        "4,1",
+        {
+          "x": 13.75
+        },
+        "10,4",
+        "10,5"
+      ],
+      [
+        {
+          "y": -0.25,
           "x": 12.25
         },
         "11,1"
