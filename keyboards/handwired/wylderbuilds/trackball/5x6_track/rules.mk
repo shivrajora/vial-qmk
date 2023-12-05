@@ -9,7 +9,7 @@ CONSOLE_ENABLE = no
 BOOTMAGIC_ENABLE = yes
 NKRO_ENABLE = yes           # Enable N-Key Rollover
 
-RGBLIGHT_ENABLE = yes
+RGBLIGHT_ENABLE = no
 WS2812_DRIVER = vendor
 SLEEP_LED_ENABLE = no
 
@@ -18,7 +18,7 @@ OLED_ENABLE = yes
 WPM_ENABLE = yes
 EXTRAKEY_ENABLE = yes       # Audio control and System control
 
-ENCODER_ENABLE = no
-ENCODER_MAP_ENABLE = no
+ENCODER_ENABLE = yes
+ENCODER_MAP_ENABLE = yes
 
 OPT_DEFS += -DHAL_USE_I2C=TRUE

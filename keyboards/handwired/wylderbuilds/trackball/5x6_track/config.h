@@ -22,7 +22,7 @@
 #define SERIAL_PIO_USE_PIO0
 #define SERIAL_USART_TIMEOUT     100  // USART driver timeout. default 100
 #define SERIAL_USART_SPEED 921600
-//#define SERIAL_USART_PIN_SWAP
+//#define SERIAL_USART_PIN_SWAPg^[]~&mvbmn h[`|yyh
 
 #define RP2040_BOOTLOADER_DOUBLE_TAP_RESET
 #define RP2040_BOOTLOADER_DOUBLE_TAP_RESET_TIMEOUT 200U
@@ -50,9 +50,9 @@
 
 #define POINTING_DEVICE_AUTO_MOUSE_ENABLE
 // only required if not setting mouse layer elsewhere
-#define AUTO_MOUSE_DEFAULT_LAYER 4
+#define AUTO_MOUSE_DEFAULT_LAYER 3
 
-#define DYNAMIC_KEYMAP_LAYER_COUNT 5
+#define DYNAMIC_KEYMAP_LAYER_COUNT 4
 
 #define CHARYBDIS_MINIMUM_DEFAULT_DPI 1200
 #define CHARYBDIS_DEFAULT_DPI_CONFIG_STEP 400
@@ -65,12 +65,12 @@
 //#define ENCODER_RESOLUTIONS { }
 
 #ifdef ENCODER_ENABLE
-#define ENCODERS_PAD_A { GP15, GP22 }
-#define ENCODERS_PAD_B { GP14, GP28 }
+#define ENCODERS_PAD_A { GP22 }
+#define ENCODERS_PAD_B { GP28 }
 #define ENCODER_RESOLUTIONS { 2 }
-//#define ENCODERS_PAD_A_RIGHT { GP26 }
-//#define ENCODERS_PAD_B_RIGHT { GP27 }
-//#define ENCODER_RESOLUTIONS_RIGHT { 2 }
+#define ENCODERS_PAD_A_RIGHT { GP27 }
+#define ENCODERS_PAD_B_RIGHT { GP29 }
+#define ENCODER_RESOLUTIONS_RIGHT { 2 }
 #endif
 
 //// Sensor Notes ////
@@ -114,29 +114,29 @@
 #define OLED_FADE_OUT_INTERVAL 0
 #endif
 
-#ifdef RGBLIGHT_ENABLE
-#define WS2812_PIO_USE_PIO1
+//#ifdef RGBLIGHT_ENABLE
 //#define WS2812_PIO_USE_PIO1
-//#define WS2812_PIO_USE_PIO1
-#define RGBLIGHT_LAYERS
-#define WS2812_DI_PIN GP22 // can use trackball jack if not used
-//#define WS2812_EXTERNAL_PULLUP
-#define RGBLED_NUM 36
-//#define DRIVER_LED_TOTAL 34
-#define RGBLED_SPLIT { 18, 18 }
-#define RGBLIGHT_SPLIT
-#define RGBLIGHT_EFFECT_RGB_TEST
-#define RGBLIGHT_EFFECT_BREATHING
-#define RGBLIGHT_EFFECT_RAINBOW_MOOD
-#define RGBLIGHT_EFFECT_SNAKE
-#define RGBLIGHT_EFFECT_TWINKLE
-#define RGBLIGHT_HUE_STEP 8
-#define RGBLIGHT_SAT_STEP 8
-#define RGBLIGHT_VAL_STEP 17
-#define RGBLIGHT_LIMIT_VAL 100
-//#define STM32_SYSCLK KINETIS_SYSCLK_FREQUENCY
-#define NOP_FUDGE 0.4  // may not be needed if ws driver loaded
-#endif
+////#define WS2812_PIO_USE_PIO1
+////#define WS2812_PIO_USE_PIO1
+//#define RGBLIGHT_LAYERS
+//#define WS2812_DI_PIN GP22 // can use trackball jack if not used
+////#define WS2812_EXTERNAL_PULLUP
+//#define RGBLED_NUM 36
+////#define DRIVER_LED_TOTAL 34
+//#define RGBLED_SPLIT { 18, 18 }
+//#define RGBLIGHT_SPLIT
+//#define RGBLIGHT_EFFECT_RGB_TEST
+//#define RGBLIGHT_EFFECT_BREATHING
+//#define RGBLIGHT_EFFECT_RAINBOW_MOOD
+//#define RGBLIGHT_EFFECT_SNAKE
+//#define RGBLIGHT_EFFECT_TWINKLE
+//#define RGBLIGHT_HUE_STEP 8
+//#define RGBLIGHT_SAT_STEP 8
+//#define RGBLIGHT_VAL_STEP 17
+//#define RGBLIGHT_LIMIT_VAL 100
+////#define STM32_SYSCLK KINETIS_SYSCLK_FREQUENCY
+//#define NOP_FUDGE 0.4  // may not be needed if ws driver loaded
+//#endif
 
 // Misc settings
 // Mechanical locking support. Use KC_LCAP, KC_LNUM or KC_LSCR instead in keymap
