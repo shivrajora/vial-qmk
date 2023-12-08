@@ -58,12 +58,14 @@
 // GP19 -- MOSI pin
 // GP18 -- SCK pin clock Driver
 
-//#define ENCODERS_PAD_A {  }
-//#define ENCODERS_PAD_B {  }
-//#define ENCODER_RESOLUTIONS { 1 }
-//#define ENCODERS_PAD_A_RIGHT { GP27 }
-//#define ENCODERS_PAD_B_RIGHT { GP28 }
-//#define ENCODER_RESOLUTIONS_RIGHT { 2 }
+#ifdef ENCODER_ENABLE
+#define ENCODERS_PAD_A { GP22 }
+#define ENCODERS_PAD_B { GP28 }
+#define ENCODER_RESOLUTIONS { 2 }
+#define ENCODERS_PAD_A_RIGHT { GP22 }
+#define ENCODERS_PAD_B_RIGHT { GP28 }
+#define ENCODER_RESOLUTIONS_RIGHT { 2 }
+#endif
 
 #ifdef OLED_ENABLE
 #define I2C_DRIVER I2CD0
