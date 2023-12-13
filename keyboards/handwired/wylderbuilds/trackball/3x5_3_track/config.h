@@ -50,7 +50,7 @@
 #define PMW33XX_CS_PIN GP21
 #define POINTING_DEVICE_TASK_THROTTLE_MS 1
 #define PMW33XX_LIFTOFF_DISTANCE 0x02
-#define POINTING_DEVICE_AUTO_MOUSE_ENABLE
+//#define POINTING_DEVICE_AUTO_MOUSE_ENABLE
 // only required if not setting mouse layer elsewhere
 //#define AUTO_MOUSE_DEFAULT_LAYER 3
 //
