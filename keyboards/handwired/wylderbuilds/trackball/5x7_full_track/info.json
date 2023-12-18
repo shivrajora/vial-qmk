@@ -17,7 +17,7 @@
     "cols": 7
   },
   "ws2812": {
-    "pin": "GP22",
+    "pin": "GP28",
     "driver": "vendor"
   },
   "features": {
