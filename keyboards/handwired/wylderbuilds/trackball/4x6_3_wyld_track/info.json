@@ -16,7 +16,7 @@
     "cols": 6
   },
   "ws2812": {
-    "pin": "GP15",
+    "pin": "GP28",
     "driver": "vendor"
   },
   "split": {
