@@ -23,11 +23,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         ),
 
     [_LOWER] = LAYOUT_4x5(
-        _______,_______,_______,_______,KC_LBRC,                  KC_RBRC, KC_P7 , KC_P8 , KC_P9 ,WYLD_AUTO_MS_TOG,
+        QK_BOOT,_______,_______,_______,KC_LBRC,                  KC_RBRC, KC_P7 , KC_P8 , KC_P9 ,WYLD_AUTO_MS_TOG,
         KC_HOME,KC_PGUP,KC_PGDN,KC_END ,KC_LPRN,                  KC_RPRN, KC_P4 , KC_P5 , KC_P6 ,KC_MINS,
-        _______,_______,_______,_______,_______,                  _______, KC_P1 , KC_P2 , KC_P3 ,KC_EQL ,
+        _______,_______,_______,SNIPING,DRGSCRL,                  _______, KC_P1 , KC_P2 , KC_P3 ,KC_EQL ,
                          KC_LBRC, KC_RBRC,                                         KC_EQL, KC_BSLS,
-                               DRGSCRL, KC_BTN1, KC_BTN3,    QK_BOOT, _______, _______
+                            _______, KC_BTN1, KC_BTN3,    _______, _______, _______
         ),
 
     [_RAISE] = LAYOUT_4x5(
@@ -35,7 +35,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______,_______,_______,_______,KC_LBRC,                    KC_RBRC,_______,KC_NUM,KC_INS ,KC_SCRL,
         KC_LEFT,KC_UP,KC_DOWN,KC_RGHT,KC_LPRN,                      KC_RPRN,KC_MPRV,KC_MPLY,KC_VOLU,KC_VOLD,
                 KC_LBRC, KC_RBRC,                                                   KC_EQL, KC_BSLS,
-                                _______, _______,QK_BOOT,     _______,_______,_______
+                                _______, _______,_______,q     _______,_______,_______
         ),
     [_MOUSE] = LAYOUT_4x5(
         _______, _______, _______, _______, _______,         _______, _______, _______, _______, _______,
