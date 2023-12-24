@@ -1,5 +1,5 @@
 #include QMK_KEYBOARD_H
-#include "4x5_3_all_track.h"
+#include "3x6_dual_track.h"
 
 #define _QWERTY 0
 #define _LOWER 1
@@ -21,36 +21,35 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
             KC_LSFT, KC_Z  , KC_X  , KC_C  , KC_V  , KC_B  ,              KC_N  , KC_M  , KC_COMM,KC_DOT ,KC_SLSH, KC_BSLS,
                                                 RAISE,                      LOWER,
                                                 KC_SPC,                     KC_ENT,
-                                                KC_BSPC, KC_HOME,   KC_DEL, KC_LALT
+                                                KC_BSPC, KC_HOME,   KC_MUTE,KC_LALT
     ),
 
     [_LOWER] = LAYOUT_3x6(
-        WYLD_AUTO_MS_TOG,_______,_______,_______,_______,KC_LBRC,                     KC_RBRC, KC_P7 , KC_P8 , KC_P9 ,_______,KC_PLUS,
+        WYLD_AUTO_MS_TOG,_______,_______,_______,_______,KC_LBRC,                KC_RBRC, KC_P7 , KC_P8 , KC_P9 ,_______,KC_PLUS,
             _______,KC_HOME,KC_PGUP,KC_PGDN,KC_END ,KC_LPRN,                     KC_RPRN, KC_P4 , KC_P5 , KC_P6 ,KC_MINS,KC_PIPE,
-            _______,_______,_______,_______,SNIPING,DRGSCRL,                     _______, KC_P1 , KC_P2 , KC_P3 ,KC_EQL ,KC_UNDS,
+            KC_LCTL,_______,_______,SNIPING, DRGSCRL,KC_BTN3,                    _______, KC_P1 , KC_P2 , KC_P3 ,KC_EQL ,KC_UNDS,
                                                     _______,                     _______,
-                                                    KC_BTN3,                     _______,
-                                                    KC_BTN1,KC_BTN2,     _______,QK_BOOT
+                                                    KC_BTN2,                     _______,
+                                                    KC_BTN1,KC_HOME,     KC_MUTE,QK_BOOT
 
     ),
 
     [_RAISE] = LAYOUT_3x6(
             KC_F12 , KC_F1 , KC_F2 , KC_F3 , KC_F4 , KC_F5 ,                     KC_F6  , KC_F7 , KC_F8 , KC_F9 ,KC_F10 ,KC_F11 ,
             _______,_______,_______,_______,_______,KC_LBRC,                     KC_RBRC,_______,KC_NUM,KC_INS ,KC_SCRL,KC_MUTE,
-            _______,KC_LEFT,KC_UP  ,KC_DOWN,KC_RGHT,KC_LPRN,                     KC_RPRN,KC_MPRV,KC_MPLY,KC_MNXT,KC_VOLD,KC_VOLU,
+            KC_LCTL,KC_LEFT,KC_UP  ,KC_DOWN,KC_RGHT,KC_LPRN,                     KC_RPRN,KC_MPRV,KC_MPLY,KC_MNXT,KC_VOLD,KC_VOLU,
                                                     _______,                     _______,
                                                     _______,                     _______,
-                                                    QK_BOOT,_______,     _______,_______
+                                                    QK_BOOT,KC_HOME,     KC_MUTE,_______
     ),
 
     [_MOUSE] = LAYOUT_3x6(
         _______,_______,_______,_______,_______,_______,                        _______,_______,_______,_______,_______,_______,
-        _______,_______,_______,_______,_______,_______,                        _______,_______,_______,_______,_______,_______,
-        _______,_______,_______,_______,_______,_______,                        _______,_______,_______,_______,_______,_______,
-        _______,_______,_______,_______,SNIPING, DRGSCRL,                       _______,_______,_______,_______,_______,_______,
+        _______,_______,_______,_______,_______,_______,                        _______,KC_BTN1,KC_BTN2,KC_BTN3,_______,_______,
+        _______,_______,_______,SNIPING, DRGSCRL,KC_BTN3,                       _______,_______,_______,_______,_______,_______,
                                                    _______,                     _______,
-                                                   _______,                     _______,
-                                                   QK_BOOT,_______,     _______,_______
+                                                   KC_BTN2,                     _______,
+                                                   KC_BTN1,KC_HOME,     KC_MUTE,_______
         )
 };
 
@@ -210,10 +209,10 @@ bool oled_task_user(void) {
 #if defined(ENCODER_MAP_ENABLE)
 // TWO ENCODERS
 const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][2] = {
-    [_QWERTY] =  { ENCODER_CCW_CW(KC_VOLD, KC_VOLU) },
-    [_LOWER] =   { ENCODER_CCW_CW(KC_MS_WH_UP, KC_MS_WH_DOWN) },
-    [_RAISE] =   { ENCODER_CCW_CW(KC_MS_WH_UP, KC_MS_WH_DOWN) },
-    [_MOUSE] =   { ENCODER_CCW_CW(KC_VOLD, KC_VOLU) }
+    [_QWERTY] =  { ENCODER_CCW_CW(KC_MS_WH_UP, KC_MS_WH_DOWN), ENCODER_CCW_CW(KC_VOLD, KC_VOLU) },
+    [_LOWER] =   { ENCODER_CCW_CW(KC_MS_WH_UP, KC_MS_WH_DOWN), ENCODER_CCW_CW(KC_VOLD, KC_VOLU) },
+    [_RAISE] =   { ENCODER_CCW_CW(KC_MS_WH_UP, KC_MS_WH_DOWN), ENCODER_CCW_CW(KC_VOLD, KC_VOLU) },
+    [_MOUSE] =   { ENCODER_CCW_CW(KC_MS_WH_UP, KC_MS_WH_DOWN), ENCODER_CCW_CW(KC_VOLD, KC_VOLU) },
 };
 #endif
 
