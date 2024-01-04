@@ -1,12 +1,12 @@
 {
-  "keyboard_name": "Dactyl-Manuform Wyld Trackball (4x6_whole_track)",
+  "keyboard_name": "Dactyl-Manuform Wyld Trackball (4x6_mini_track)",
   "manufacturer": "wylderbuilds",
   "url": "https://wylderbuilds.com",
   "maintainer": "qmk",
   "processor": "RP2040",
   "usb": {
     "vid": "0x9953",
-    "pid": "0x0055",
+    "pid": "0x0140",
     "device_version": "0.0.1"
   },
   "width": 18,
@@ -209,26 +209,6 @@
           "y": 3
         },
         {
-          "label": "3,4",
-          "x": 5,
-          "y": 3
-        },
-        {
-          "label": "3,5",
-          "x": 6,
-          "y": 3
-        },
-        {
-          "label": "8,0",
-          "x": 12.75,
-          "y": 3
-        },
-        {
-          "label": "8,1",
-          "x": 13.75,
-          "y": 3
-        },
-        {
           "label": "8,2",
           "x": 14.75,
           "y": 3
@@ -237,26 +217,6 @@
           "label": "8,3",
           "x": 15.75,
           "y": 3
-        },
-        {
-          "label": "3,0",
-          "x": 1,
-          "y": 3.5
-        },
-        {
-          "label": "3,1",
-          "x": 2,
-          "y": 3.5
-        },
-        {
-          "label": "8,4",
-          "x": 16.75,
-          "y": 3.5
-        },
-        {
-          "label": "8,5",
-          "x": 17.75,
-          "y": 3.5
         },
         {
           "label": "9,0",
@@ -271,11 +231,6 @@
         {
           "label": "9,2",
           "x": 11.75,
-          "y": 6.75
-        },
-        {
-          "label": "9,3",
-          "x": 13,
           "y": 6.75
         },
         {
