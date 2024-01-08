@@ -181,32 +181,6 @@ void charybdis_set_pointer_dragscroll_enabled(bool enable) {
 #        endif  // CHARYBDIS_POINTER_ACCELERATION_ENABLE
 #    endif      // !DISPLACEMENT_WITH_ACCELERATION
 
-
-void check_drag_scroll(report_mouse_t* mouse_report) {
-    static int16_t scroll_buffer_x = 0;
-    static int16_t scroll_buffer_y = 0;
-
-#ifdef CHARYBDIS_DRAGSCROLL_REVERSE_X
-    scroll_buffer_x -= mouse_report->x;
-#else
-    scroll_buffer_x += mouse_report->x;
-#endif  // CHARYBDIS_DRAGSCROLL_REVERSE_X
-#ifdef CHARYBDIS_DRAGSCROLL_REVERSE_Y
-    scroll_buffer_y -= mouse_report->y;
-#else
-    scroll_buffer_y += mouse_report->y;
-#endif  // CHARYBDIS_DRAGSCROLL_REVERSE_Y
-    mouse_report->x = 0;
-    mouse_report->y = 0;
-    if (abs(scroll_buffer_x) > CHARYBDIS_DRAGSCROLL_BUFFER_SIZE) {
-        mouse_report->h = scroll_buffer_x > 0 ? 1 : -1;
-        scroll_buffer_x = 0;
-    }
-    if (abs(scroll_buffer_y) > CHARYBDIS_DRAGSCROLL_BUFFER_SIZE) {
-        mouse_report->v = scroll_buffer_y > 0 ? 1 : -1;
-        scroll_buffer_y = 0;
-    }
-}
 /**
  * \brief Augment the pointing device behavior.
  *
@@ -216,8 +190,31 @@ void check_drag_scroll(report_mouse_t* mouse_report) {
  *   - Acceleration
  */
 static void pointing_device_task_charybdis(report_mouse_t* mouse_report) {
+    static int16_t scroll_buffer_x = 0;
+    static int16_t scroll_buffer_y = 0;
+    print("In pointing_device_task_charybdis\n");
     if (g_charybdis_config.is_dragscroll_enabled) {
-        check_drag_scroll(mouse_report);
+#    ifdef CHARYBDIS_DRAGSCROLL_REVERSE_X
+        scroll_buffer_x -= mouse_report->x;
+#    else
+        scroll_buffer_x += mouse_report->x;
+#    endif  // CHARYBDIS_DRAGSCROLL_REVERSE_X
+#    ifdef CHARYBDIS_DRAGSCROLL_REVERSE_Y
+        scroll_buffer_y -= mouse_report->y;
+#    else
+        scroll_buffer_y += mouse_report->y;
+#    endif  // CHARYBDIS_DRAGSCROLL_REVERSE_Y
+        mouse_report->x = 0;
+        mouse_report->y = 0;
+        if (abs(scroll_buffer_x) > CHARYBDIS_DRAGSCROLL_BUFFER_SIZE) {
+            mouse_report->h = scroll_buffer_x > 0 ? 1 : -1;
+            scroll_buffer_x = 0;
+        }
+        if (abs(scroll_buffer_y) > CHARYBDIS_DRAGSCROLL_BUFFER_SIZE) {
+            mouse_report->v = scroll_buffer_y > 0 ? 1 : -1;
+            scroll_buffer_y = 0;
+        }
+
     } else if (!g_charybdis_config.is_sniping_enabled) {
         mouse_report->x = DISPLACEMENT_WITH_ACCELERATION(mouse_report->x);
         mouse_report->y = DISPLACEMENT_WITH_ACCELERATION(mouse_report->y);

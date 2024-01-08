@@ -93,7 +93,7 @@ void keyboard_post_init_user(void) {
     debug_mouse=true;
 #else
     debug_enable=false;
-    debug_matrix=false;j
+    debug_matrix=false;
     debug_keyboard=false;
     debug_mouse=false;
 #endif
