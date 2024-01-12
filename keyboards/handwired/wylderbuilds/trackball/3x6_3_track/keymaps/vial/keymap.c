@@ -14,7 +14,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_ESC , KC_Q  , KC_W  , KC_E  , KC_R  , KC_T  ,                     KC_Y  , KC_U  , KC_I  , KC_O  , KC_P  ,KC_MINS,
         KC_TAB,  KC_A  , KC_S  , KC_D  , KC_F  , KC_G  ,                     KC_H  , KC_J  , KC_K  , KC_L  ,KC_SCLN,KC_QUOT,
         KC_LSFT, KC_Z  , KC_X  , KC_C  , KC_V  , KC_B  ,                     KC_N  , KC_M  ,KC_COMM,KC_DOT ,KC_SLSH,KC_BSLS,
-                                    RAISE,   KC_SPC,  KC_TAB,          KC_LCTRL, KC_ENT, LOWER
+                                    RAISE,   KC_SPC,  KC_TAB,          KC_LCTL, KC_ENT, LOWER
         ),
     [_RAISE] = LAYOUT_split_3x6_3(
         RGB_VAI,RGB_SAI,RGB_HUI,RGB_MOD,RGB_TOG,KC_LBRC,                    KC_RBRC, KC_P7 , KC_P8 , KC_P9 ,_______,KC_PLUS,

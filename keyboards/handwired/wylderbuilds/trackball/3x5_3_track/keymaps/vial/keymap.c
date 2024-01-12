@@ -1,5 +1,5 @@
 #include QMK_KEYBOARD_H
-#include "3x6_dual_track.h"
+#include "3x5_3_track.h"
 
 #define _QWERTY 0
 #define _LOWER 1
