@@ -1,23 +1,24 @@
-# Board, Bootloader and MCU
 MCU = RP2040
+SPLIT_KEYBOARD = yes
 BOOTLOADER = rp2040
 SERIAL_DRIVER = vendor
-F_CPU = 8000000
-SPLIT_KEYBOARD = yes
-
-# Drivers for components
-OLED_DRIVER = SSD1306
-OLED_DRIVER = no
-# Needed for OLED setup
-WPM_ENABLE = no
-# RGB Light
 RGBLIGHT_ENABLE = no
+MOUSEKEY_ENABLE = yes
 CONSOLE_ENABLE = no
+#COMMAND_ENABLE = yes
+BOOTMAGIC_ENABLE = yes
+NKRO_ENABLE = yes           # Enable N-Key Rollover
 
-POINTING_DEVICE_ENABLE = yes
-POINTING_DEVICE_DRIVER = pmw3360
-MOUSE_SHARED_EP = yes
+RGBLIGHT_ENABLE = no
+WS2812_DRIVER = vendor
+SLEEP_LED_ENABLE = no
 
-# Opt defs, comment out you're if not using OLED screen for the dactyl_manuform.
+OLED_ENABLE = yes
+#OLED_DRIVER = SSD1306
+WPM_ENABLE = yes
+EXTRAKEY_ENABLE = yes       # Audio control and System control
+
+ENCODER_ENABLE = no
+ENCODER_MAP_ENABLE = no
+
 OPT_DEFS += -DHAL_USE_I2C=TRUE
-

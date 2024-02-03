@@ -1,7 +1,7 @@
 // Dactyl Manuform Hotswap
 #pragma once
 
-#include "config_common.h"
+//#include "config_common.h"
 // Basic Config
 
 //#define PRODUCT_ID 0x0002
@@ -12,8 +12,8 @@
 
 // Using Serial instead of I2C
 #define SERIAL_USART_FULL_DUPLEX 
-#define SERIAL_USART_TX_PIN GP16
-#define SERIAL_USART_RX_PIN GP17
+#define SERIAL_USART_TX_PIN GP0
+#define SERIAL_USART_RX_PIN GP1
 #define SERIAL_PIO_USE_PIO0
 #define SERIAL_USART_TIMEOUT     100  // USART driver timeout. default 100
 #define SERIAL_USART_SPEED 921600
@@ -21,11 +21,11 @@
 
 /* key matrix size */
 // Rows are doubled-up
-#define MATRIX_ROWS 12
+#define MATRIX_ROWS 10
 #define MATRIX_COLS 6
 
-#define MATRIX_COL_PINS { GP3, GP4, GP5, GP6, GP7, GP8 }
-#define MATRIX_ROW_PINS { GP10, GP11, GP12, GP13, GP14, GP15 }
+#define MATRIX_COL_PINS { GP2, GP3, GP4, GP5, GP6, GP7 }
+#define MATRIX_ROW_PINS { GP9, GP10, GP11, GP12, GP13 }
 #define DIODE_DIRECTION COL2ROW
 
 #define SPLIT_POINTING_ENABLE
@@ -35,6 +35,13 @@
 #define PMW33XX_CS_PIN GP21
 #define POINTING_DEVICE_TASK_THROTTLE_MS 1
 
+#define SPLIT_TRANSACTION_IDS_KB RPC_ID_KB_CONFIG_SYNC
+
+#define POINTING_DEVICE_AUTO_MOUSE_ENABLE
+// only required if not setting mouse layer elsewhere
+#define AUTO_MOUSE_DEFAULT_LAYER 3
+
+#define DYNAMIC_KEYMAP_LAYER_COUNT 5
 //// Sensor Notes ////
 //// Pi Pico pins ////
 // 3V3  -- Power (not 3v3_EN)
@@ -45,20 +52,12 @@
 // GND  -- GND
 
 // WS2812 RGB LED strip input and number of LEDs
-#ifdef RGBLIGHT_ENABLE
-#define RGB_DI_PIN GP17
-#define RGBLED_NUM 34
-//#define DRIVER_LED_TOTAL 34
-#define RGBLED_SPLIT { 17, 17 }
-#define STM32_SYSCLK KINETIS_SYSCLK_FREQUENCY
-#define NOP_FUDGE 0.4
-#endif
 
 // OLED Pins and Driver
 #ifdef OLED_ENABLE
-#define I2C_DRIVER I2CD1
-#define I2C1_SDA_PIN GP18
-#define I2C1_SCL_PIN GP19
+#define I2C_DRIVER I2CD0
+#define I2C1_SDA_PIN GP16
+#define I2C1_SCL_PIN GP17
 // OLED Options
 #define SPLIT_OLED_ENABLE
 #define SPLIT_WPM_ENABLE
