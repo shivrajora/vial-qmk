@@ -9,6 +9,7 @@
 #define BOOTMAGIC_LITE_COLUMN 5
 
 #define SPLIT_HAND_PIN      GP26  // high = left, low = right
+#define SPLIT_LAYER_STATE_ENABLE
 
 // Using Serial instead of I2C
 #define SERIAL_USART_FULL_DUPLEX 
@@ -17,7 +18,7 @@
 #define SERIAL_PIO_USE_PIO0
 #define SERIAL_USART_TIMEOUT     100  // USART driver timeout. default 100
 #define SERIAL_USART_SPEED 921600
-#define SERIAL_USART_PIN_SWAP
+//#define SERIAL_USART_PIN_SWAP
 
 /* key matrix size */
 // Rows are doubled-up
@@ -34,6 +35,7 @@
 #define POINTING_DEVICE_RIGHT
 #define PMW33XX_CS_PIN GP21
 #define POINTING_DEVICE_TASK_THROTTLE_MS 1
+#define PMW33XX_LIFTOFF_DISTANCE 0x02
 
 #define SPLIT_TRANSACTION_IDS_KB RPC_ID_KB_CONFIG_SYNC
 
