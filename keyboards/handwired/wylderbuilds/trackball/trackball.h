@@ -110,6 +110,13 @@ void check_drag_scroll(report_mouse_t* mouse_report);
  * are translated into horizontal and vertical scroll movements.
  */
 void charybdis_set_pointer_dragscroll_enabled(bool enable);
+
+void increase_dpi(void);
+
+void decrease_dpi(void);
+
+void reset_dpi(void);
+
 #endif  // POINTING_DEVICE_ENABLE
 
 void matrix_init_sub_kb(void);

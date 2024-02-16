@@ -116,6 +116,9 @@ static void maybe_update_pointing_device_cpi(charybdis_config_t* config) {
  */
 static void step_pointer_default_dpi(charybdis_config_t* config, bool forward) {
     config->pointer_default_dpi += forward ? 1 : -1;
+    if (config->pointer_default_dpi < 1) {
+        config->pointer_default_dpi = 1;
+    }
     maybe_update_pointing_device_cpi(config);
 }
 
@@ -127,7 +130,27 @@ static void step_pointer_default_dpi(charybdis_config_t* config, bool forward) {
  */
 static void step_pointer_sniping_dpi(charybdis_config_t* config, bool forward) {
     config->pointer_sniping_dpi += forward ? 1 : -1;
+    if (config->pointer_sniping_dpi < 1) {
+        config->pointer_sniping_dpi = 1;
+    }
     maybe_update_pointing_device_cpi(config);
+}
+
+void increase_dpi(void) {
+    step_pointer_default_dpi(&g_charybdis_config, true);
+}
+
+void decrease_dpi(void) {
+    step_pointer_default_dpi(&g_charybdis_config, false);
+}
+
+static void set_default_pointer_dpi(charybdis_config_t* config, uint8_t new_value) {
+    config->pointer_default_dpi = new_value;
+    maybe_update_pointing_device_cpi(config);
+}
+
+void reset_dpi(void) {
+    set_default_pointer_dpi(&g_charybdis_config, (uint8_t) CHARYBDIS_MINIMUM_DEFAULT_DPI);
 }
 
 uint16_t charybdis_get_pointer_default_dpi(void) { return get_pointer_default_dpi(&g_charybdis_config); }
