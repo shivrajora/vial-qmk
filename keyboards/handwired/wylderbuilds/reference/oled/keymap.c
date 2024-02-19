@@ -4,9 +4,14 @@ oled_rotation_t oled_init_user(oled_rotation_t rotation) {
     if (is_keyboard_left()) {
         return OLED_ROTATION_270;
     }
+#ifdef POINTING_DEVICE_ENABLE
+    return OLED_ROTATION_270;
+#else
     return OLED_ROTATION_0;
+#endif
 }
 
+#ifndef POINTING_DEVICE_ENABLE
 static const char PROGMEM wylderbuilds[] = {
     // 'dark wylderbuilds_oled_name', 128x32
     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
@@ -46,6 +51,61 @@ static const char PROGMEM wylderbuilds[] = {
 static void render_wylderbuilds(void) {
     oled_write_raw_P(wylderbuilds, sizeof(wylderbuilds));
 }
+
+#endif
+
+static char layer_names[5][8] = {
+            " BASE\n",
+            "LOWER\n",
+            "RAISE\n",
+            "MOUSE\n",
+            " XTRA\n"
+            };
+
+bool oled_task_user(void) {
+    char* layer_name = layer_names[get_highest_layer(layer_state)];
+
+    if (is_keyboard_left()) {
+        //        oled_write_P(PSTR("Layer\n"), false);
+        oled_set_cursor(0, 3);
+        oled_write_P(PSTR(layer_name), false);
+
+        oled_set_cursor(2, 6);
+        oled_write_P(PSTR("WPM "), false);
+        oled_set_cursor(2, 7);
+        oled_write(get_u8_str(get_current_wpm(), ' '), false);
+        // Host Keyboard LED Status
+
+        oled_set_cursor(0, 9);
+        led_t led_state = host_keyboard_led_state();
+
+        oled_write_P(led_state.num_lock ? PSTR("NUMLK \n") : PSTR("    \n"), false);
+        oled_write_P(led_state.caps_lock ? PSTR("CAPLK \n") : PSTR("    \n"), false);
+        oled_write_P(led_state.scroll_lock ? PSTR("SCRLK \n") : PSTR("    \n"), false);
+    } else {
+        // write WPM to right OLED
+#ifdef POINTING_DEVICE_ENABLE
+        char* mode = get_mouse_mode_string();
+        uint16_t dpi = get_current_dpi();
+        oled_set_cursor(2, 3);
+        oled_write_P(PSTR("DPI "), false);
+        oled_set_cursor(0, 5);
+        oled_write_P(PSTR(get_u16_str(dpi, ' ')), false);
+        oled_set_cursor(0, 9);
+        oled_write(PSTR(mode), false);
+#else
+        oled_set_cursor(0, 0);
+        render_wylderbuilds();
+        oled_scroll_left();
+#endif
+    }
+
+    return false;
+}
+#endif
+
+
+
 
 bool oled_task_user(void) {
     oled_set_cursor(0, 3);
