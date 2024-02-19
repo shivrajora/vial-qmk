@@ -17,6 +17,7 @@
 #pragma once
 
 #include "quantum.h"
+#include <string.h>
 
 //#warning ">>> PREPROCESSOR CHECKING trackball.h"
 
@@ -24,6 +25,7 @@
 enum charybdis_keycodes {
     POINTER_DEFAULT_DPI_FORWARD = QK_KB_0,
     POINTER_DEFAULT_DPI_REVERSE,
+    POINTER_DEFAULT_DPI_RESET,
     POINTER_SNIPING_DPI_FORWARD,
     POINTER_SNIPING_DPI_REVERSE,
     SNIPING_MODE,
@@ -34,6 +36,7 @@ enum charybdis_keycodes {
 #        define CHARYBDIS_SAFE_RANGE KEYMAP_SAFE_RANGE
 #        define DPI_MOD POINTER_DEFAULT_DPI_FORWARD
 #        define DPI_RMOD POINTER_DEFAULT_DPI_REVERSE
+#        define DPI_RST POINTER_DEFAULT_DPI_RESET
 #        define S_D_MOD POINTER_SNIPING_DPI_FORWARD
 #        define S_D_RMOD POINTER_SNIPING_DPI_REVERSE
 #        define SNIPING SNIPING_MODE
@@ -111,11 +114,13 @@ void check_drag_scroll(report_mouse_t* mouse_report);
  */
 void charybdis_set_pointer_dragscroll_enabled(bool enable);
 
-void increase_dpi(void);
-
-void decrease_dpi(void);
+void set_default_pointer_dpi(void);
 
 void reset_dpi(void);
+
+uint16_t get_current_dpi(void);
+
+char* get_mouse_mode_string(void);
 
 #endif  // POINTING_DEVICE_ENABLE
 

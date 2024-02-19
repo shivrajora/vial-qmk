@@ -16,6 +16,7 @@
 
 #include "trackball.h"
 #include "transactions.h"
+#include <math.h>
 #include <string.h>
 #include "print.h"
 
@@ -55,6 +56,9 @@
 #        define CHARYBDIS_POINTER_ACCELERATION_FACTOR 24
 #    endif  // !CHARYBDIS_POINTER_ACCELERATION_FACTOR
 
+#    ifndef CHARYBDIS_MAX_DEFAULT_DPI_MULTIPLIER
+#        define CHARYBDIS_MAX_DEFAULT_DPI_MULTIPLIER 5
+#    endif  // !CHARYBDIS_POINTER_ACCELERATION_FACTOR
 typedef union {
     uint8_t raw;
     struct {
@@ -118,6 +122,8 @@ static void step_pointer_default_dpi(charybdis_config_t* config, bool forward) {
     config->pointer_default_dpi += forward ? 1 : -1;
     if (config->pointer_default_dpi < 1) {
         config->pointer_default_dpi = 1;
+    } else if (config->pointer_default_dpi >= CHARYBDIS_MAX_DEFAULT_DPI_MULTIPLIER) {
+        config->pointer_default_dpi = CHARYBDIS_MAX_DEFAULT_DPI_MULTIPLIER;
     }
     maybe_update_pointing_device_cpi(config);
 }
@@ -136,21 +142,10 @@ static void step_pointer_sniping_dpi(charybdis_config_t* config, bool forward) {
     maybe_update_pointing_device_cpi(config);
 }
 
-void increase_dpi(void) {
-    step_pointer_default_dpi(&g_charybdis_config, true);
-}
-
-void decrease_dpi(void) {
-    step_pointer_default_dpi(&g_charybdis_config, false);
-}
-
-static void set_default_pointer_dpi(charybdis_config_t* config, uint8_t new_value) {
-    config->pointer_default_dpi = new_value;
-    maybe_update_pointing_device_cpi(config);
-}
 
 void reset_dpi(void) {
-    set_default_pointer_dpi(&g_charybdis_config, (uint8_t) CHARYBDIS_MINIMUM_DEFAULT_DPI);
+    g_charybdis_config.pointer_default_dpi = 1;
+    write_charybdis_config_to_eeprom(&g_charybdis_config);
 }
 
 uint16_t charybdis_get_pointer_default_dpi(void) { return get_pointer_default_dpi(&g_charybdis_config); }
@@ -316,6 +311,11 @@ bool process_record_kb(uint16_t keycode, keyrecord_t* record) {
                 charybdis_cycle_pointer_default_dpi(/* forward= */ has_shift_mod());
             }
             break;
+        case POINTER_DEFAULT_DPI_RESET:
+            if (record->event.pressed) {
+                reset_dpi();
+            }
+            break;
         case POINTER_SNIPING_DPI_FORWARD:
             if (record->event.pressed) {
                 // Step backward if shifted, forward otherwise.
@@ -380,6 +380,25 @@ void keyboard_post_init_kb(void) {
     transaction_register_rpc(RPC_ID_KB_CONFIG_SYNC, charybdis_config_sync_handler);
 
     keyboard_post_init_user();
+}
+
+
+uint16_t get_current_dpi(void) {
+    if (g_charybdis_config.is_sniping_enabled) {
+        return get_pointer_sniping_dpi(&g_charybdis_config);
+    }
+    return get_pointer_default_dpi(&g_charybdis_config);
+}
+
+
+char* get_mouse_mode_string(void) {
+    if (g_charybdis_config.is_dragscroll_enabled) {
+        return "DRAG ";
+    }
+    if (g_charybdis_config.is_sniping_enabled) {
+        return "SNIPE";
+    }
+    return "POINT";
 }
 
 void housekeeping_task_kb(void) {
