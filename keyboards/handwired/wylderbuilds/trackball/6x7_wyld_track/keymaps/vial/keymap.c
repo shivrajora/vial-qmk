@@ -2,7 +2,6 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 #include QMK_KEYBOARD_H
 #include "6x7_wyld_track.h"
-//#include <math.h>
 #include <string.h>
 enum custom_layer {
     _QWERTY,
@@ -21,8 +20,6 @@ enum wyld_keycodes {
     WYLD_DPI_RESET
 };
 
-//char[] wyld_dpi_setting = "";
-//char[] wyld_mouse_mode = "";
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_QWERTY] = LAYOUT_6x7(
@@ -54,7 +51,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______,_______,_______,_______,_______,_______,KC_LBRC,                        KC_RBRC,_______,KC_NUM,KC_INS ,KC_SCRL,KC_MUTE, _______,
         _______,_______,KC_LEFT,KC_UP  ,KC_DOWN,KC_RGHT,KC_LPRN, KC_MUTE,    KC_HOME,  KC_RPRN,KC_MPRV,KC_MPLY,KC_MNXT,_______,KC_VOLU, _______,
         _______,_______,_______,_______,_______,_______,_______,                        _______,_______,_______,_______,_______,KC_VOLD, _______,
-        QK_BOOT,_______,_______,_______,_______,_______,_______,                        _______,_______,_______,_______,_______,_______, _______,
+        QK_BOOT,_______,RGB_VAI,RGB_SAI,RGB_HUI,RGB_MOD,RGB_TOG,                         _______,_______,_______,_______,_______,_______, _______,
                                 _______,_______,                                                        KC_EQL ,_______,
                                                    _______, _______, _______,     _______, _______, _______,
                                                              _______, _______
@@ -82,19 +79,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 };
 
-//void keyboard_post_init_user(void) {
-//#ifdef CONSOLE_ENABLE
-//    debug_enable=true;
-//    debug_matrix=true;
-//    debug_keyboard=true;
-//    debug_mouse=true;
-//#else
-//    debug_enable=false;
-//    debug_matrix=false;
-//    debug_keyboard=false;
-//    debug_mouse=false;
-//#endif
-//}
+
 
 #ifdef POINTING_DEVICE_AUTO_MOUSE_ENABLE
 void pointing_device_init_user(void) {
