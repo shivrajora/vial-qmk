@@ -1,3 +1,5 @@
+/// NEW SETUP, TRACKBALL CODE
+
 #ifdef OLED_ENABLE
 
 oled_rotation_t oled_init_user(oled_rotation_t rotation) {
@@ -104,8 +106,61 @@ bool oled_task_user(void) {
 }
 #endif
 
+/// NEW SETUP, SINGLE OLED
+
+#ifdef OLED_ENABLE
+
+oled_rotation_t oled_init_user(oled_rotation_t rotation) {
+    return OLED_ROTATION_270;
+}
 
 
+static char layer_names[5][8] = {
+            " BASE\n",
+            "LOWER\n",
+            "RAISE\n",
+            "MOUSE\n",
+            " XTRA\n"
+            };
+
+bool oled_task_user(void) {
+    char* layer_name = layer_names[get_highest_layer(layer_state)];
+    char* mode = get_mouse_mode_string();
+
+    if (is_keyboard_left()) {
+        //        oled_write_P(PSTR("Layer\n"), false);
+        oled_set_cursor(0, 3);
+        oled_write_P(PSTR(layer_name), false);
+
+        // Host Keyboard LED Status
+
+//        oled_set_cursor(0, 9);
+//        led_t led_state = host_keyboard_led_state();
+
+//        oled_write_P(led_state.num_lock ? PSTR("NUMLK \n") : PSTR("    \n"), false);
+//        oled_write_P(led_state.caps_lock ? PSTR("CAPLK \n") : PSTR("    \n"), false);
+//        oled_write_P(led_state.scroll_lock ? PSTR("SCRLK \n") : PSTR("    \n"), false);
+
+        // write WPM to right OLED
+
+        uint16_t dpi = get_current_dpi();
+        oled_set_cursor(2, 3);
+        oled_write_P(PSTR("DPI "), false);
+        oled_set_cursor(0, 5);
+        oled_write_P(PSTR(get_u16_str(dpi, ' ')), false);
+        oled_set_cursor(0, 8);
+        oled_write(PSTR(mode), false);
+        oled_set_cursor(2, 10);
+        oled_write_P(PSTR("WPM "), false);
+        oled_set_cursor(2, 12);
+        oled_write(get_u8_str(get_current_wpm(), ' '), false);
+    }
+
+    return false;
+}
+#endif
+
+/////  OLD SETUP ////
 
 bool oled_task_user(void) {
     oled_set_cursor(0, 3);
@@ -151,3 +206,5 @@ bool oled_task_user(void) {
     return false;
 }
 #endif
+
+
