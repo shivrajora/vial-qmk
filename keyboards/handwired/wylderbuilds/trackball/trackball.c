@@ -170,7 +170,7 @@ bool charybdis_get_pointer_sniping_enabled(void) { return g_charybdis_config.is_
 
 void charybdis_set_pointer_sniping_enabled(bool enable) {
     g_charybdis_config.is_sniping_enabled = enable;
-    g_charybdis_config.is_dragscroll_enabled = false; // if we're adjusting sniping, then dragscroll should be false
+    if(enable) g_charybdis_config.is_dragscroll_enabled = false; // if we're adjusting sniping, then dragscroll should be false
     maybe_update_pointing_device_cpi(&g_charybdis_config);
 }
 
@@ -178,7 +178,7 @@ bool charybdis_get_pointer_dragscroll_enabled(void) { return g_charybdis_config.
 
 void charybdis_set_pointer_dragscroll_enabled(bool enable) {
     g_charybdis_config.is_dragscroll_enabled = enable;
-    g_charybdis_config.is_sniping_enabled = false;  // if we're adjusting dragscroll. then sniping should be false
+    if(enable) g_charybdis_config.is_sniping_enabled = false;  // if we're adjusting dragscroll. then sniping should be false
     maybe_update_pointing_device_cpi(&g_charybdis_config);
 }
 
