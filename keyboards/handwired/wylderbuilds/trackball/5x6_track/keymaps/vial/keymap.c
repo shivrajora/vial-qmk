@@ -245,7 +245,7 @@ bool oled_task_user(void) {
         oled_set_cursor(0, 7);
         oled_write(PSTR(mode), false);
 #ifdef POINTING_DEVICE_AUTO_MOUSE_ENABLE
-        oled_set_cursor(0, 10);
+        oled_set_cursor(0, 9);
         if (get_auto_mouse_enable()) {
             oled_write(PSTR("Auto"), false);
         } else {
