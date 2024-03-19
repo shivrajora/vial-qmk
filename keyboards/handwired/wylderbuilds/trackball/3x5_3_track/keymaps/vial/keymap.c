@@ -19,31 +19,34 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,            KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,
         KC_A,    KC_S,    KC_D,    KC_F,    KC_G,            KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN,
         KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,            KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH,
-                            RAISE,   KC_SPC,  KC_TAB,     KC_HOME, KC_ENT, LOWER
+                            RAISE,   KC_SPC,  KC_TAB,     KC_HOME, KC_ENT, LOWER,
+                                     KC_LALT, KC_GRV
         ),
     [_RAISE] = LAYOUT_split_3x5_3(
         KC_1,    KC_2,    KC_3,    KC_4,    KC_5,            KC_6,    KC_7,    KC_8,    KC_9,    KC_0,
         QK_BOOT, S(KC_0), KC_LCBR, KC_RCBR, KC_EQL,          KC_MINS, KC_4,    KC_5,    KC_6,    KC_QUOT,
         KC_LPRN,  KC_RPRN, KC_LBRC, KC_RBRC,_______,          _______, KC_1,    KC_2,    KC_3,    _______,
-                           _______,  _______, _______,    _______, _______, _______
+                           _______,  _______, _______,    _______, _______, _______,
+                                     _______, _______
         ),
 
     [_LOWER] = LAYOUT_split_3x5_3(
         KC_EXLM, KC_AT, KC_HASH,  KC_DLR, KC_PERC,            KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN,
-        RGB_VAI, RGB_SAI,RGB_HUI, RGB_MOD, RGB_TOG,           WYLD_AUTO_MS_TOG, KC_MINS, KC_EQL,  KC_PIPE, QK_BOOT ,
+        DPI_RMOD,DPI_MOD,DPI_RST, _______, _______,           WYLD_AUTO_MS_TOG, KC_MINS, KC_EQL,  KC_PIPE, QK_BOOT ,
         KC_LPRN,  KC_RPRN, _______, SNIPING, DRGSCRL,         _______, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT,
-                            _______, KC_BTN1, KC_BTN3,     _______, _______, _______
+                            _______, KC_BTN1, KC_BTN3,     _______, _______, _______,
+                                     _______, KC_BTN2
         ),
     [_MOUSE] = LAYOUT_split_3x5_3(
         _______, _______, _______, _______, _______,         _______, _______, _______, _______, _______,
         _______, _______, _______, _______, _______,         _______, _______, _______, _______, _______,
         _______, _______, _______, SNIPING, DRGSCRL,         _______, _______, _______, _______, _______,
-                             _______, KC_BTN1, KC_BTN3,    _______, _______, _______
+                             _______, KC_BTN1, KC_BTN3,    _______, _______, _______,
+                                      _______, KC_BTN2
         )
 };
 
 #ifdef POINTING_DEVICE_COMBINED
-
 
 static void check_drag(report_mouse_t* mouse_report) {
     static int16_t scroll_buffer_x = 0;
@@ -83,6 +86,7 @@ report_mouse_t pointing_device_task_combined_user(report_mouse_t left_report, re
 void pointing_device_init_user(void) {
 #ifdef POINTING_DEVICE_AUTO_MOUSE_ENABLE
     set_auto_mouse_enable(true);
+    set_auto_mouse_enable(false);
 #endif
 #ifdef POINTING_DEVICE_COMBINED
     pointing_device_set_cpi_on_side(true, CHARYBDIS_DRAGSCROLL_DPI); // LEFT

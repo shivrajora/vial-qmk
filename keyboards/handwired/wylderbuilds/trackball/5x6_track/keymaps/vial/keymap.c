@@ -24,22 +24,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_ESC , KC_1  , KC_2  , KC_3  , KC_4  , KC_5  ,                      KC_6  , KC_7  , KC_8  , KC_9  , KC_0  ,KC_BSPC,
         KC_TAB , KC_Q  , KC_W  , KC_E  , KC_R  , KC_T  ,                      KC_Y  , KC_U  , KC_I  , KC_O  , KC_P  ,KC_MINS,
         KC_LSFT, KC_A  , KC_S  , KC_D  , KC_F  , KC_G  ,  KC_MUTE, KC_HOME,   KC_H  , KC_J  , KC_K  , KC_L  ,KC_SCLN,KC_QUOT,
-        KC_LCTL, KC_Z  , KC_X  , KC_C  , KC_V  , KC_B  ,                      KC_N  , KC_M  ,KC_COMM,KC_DOT ,KC_SLSH,KC_BSLS,
-                         KC_LBRC,KC_RBRC,                                                    KC_PLUS, KC_EQL,
-                                                RAISE, KC_SPC,                LOWER,
-                                                KC_TAB, KC_GRV,            KC_ENT,
-                                                KC_BSPC, KC_RALT,     KC_LALT
+        KC_LCTL, KC_Z  , KC_X  , KC_C  , KC_V  , KC_B  ,                      KC_N  , KC_M  , KC_COMM,KC_DOT ,KC_SLSH,KC_BSLS,
+                         KC_LBRC,KC_RBRC,KC_BTN1,                                     KC_GRV, KC_PLUS,KC_EQL,
+                                            RAISE, KC_SPC,KC_TAB,  KC_DEL, KC_ENT, LOWER,
+                                                   KC_BSPC, KC_RALT
         ),
 
     [_LOWER] = LAYOUT_5x6(
         KC_TILD,KC_EXLM, KC_AT ,KC_HASH,KC_DLR ,KC_PERC,                     KC_CIRC,KC_AMPR,KC_ASTR,KC_LPRN,KC_RPRN,KC_DEL,
         WYLD_AUTO_MS_TOG,_______,_______,_______,_______,KC_LBRC,            KC_RBRC, KC_P7 , KC_P8 , KC_P9 ,QK_BOOT,KC_PLUS,
-        _______,KC_HOME,KC_PGUP,KC_PGDN,KC_END ,KC_LPRN, KC_MUTE, KC_HOME,   KC_RPRN, KC_P4 , KC_P5 , KC_P6 ,KC_MINS,KC_PIPE,
-        DPI_RMOD,DPI_MOD,DPI_RST,_______,SNIPING,DRGSCRL,                     _______, KC_P1 , KC_P2 , KC_P3 ,KC_EQL ,KC_UNDS,
-                         _______,KC_PSCR,                                                     QK_BOOT, KC_P0,
-                                                _______, KC_BTN1,            _______,
-                                                KC_BTN3, KC_BTN2,         _______,
-                                                _______,_______,     _______
+        _______,KC_HOME,KC_PGUP,KC_PGDN,KC_END ,KC_LPRN, KC_MUTE,   KC_HOME, KC_RPRN, KC_P4 , KC_P5 , KC_P6 ,KC_MINS,KC_PIPE,
+        DPI_RMOD,DPI_MOD,DPI_RST,_______,_______,KC_PSCR,                    _______, KC_P1 , KC_P2 , KC_P3 ,KC_EQL ,KC_UNDS,
+                         _______,SNIPING,DRGSCRL,                                     QK_BOOT, KC_INS, KC_P0,
+                                            _______, KC_BTN1,KC_BTN2,     _______,_______,_______,
+                                                     _______, KC_BTN2
         ),
 
     [_RAISE] = LAYOUT_5x6(
@@ -47,20 +45,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______,QK_BOOT,_______,_______,_______,KC_LBRC,                     KC_RBRC,_______,KC_NUM,KC_INS ,KC_SCRL,KC_MUTE,
         _______,KC_LEFT,KC_UP  ,KC_DOWN,KC_RGHT,KC_LPRN,  KC_MUTE, KC_HOME,  KC_RPRN,KC_MPRV,KC_MPLY,KC_MNXT,_______,KC_VOLU,
         _______,RGB_VAI,RGB_SAI,RGB_HUI,RGB_MOD,RGB_TOG,                     _______,_______,_______,_______,_______,KC_VOLD,
-                        _______,QK_BOOT,                                                     KC_EQL ,_______,
-                                                _______,_______,             _______,
-                                                _______,_______,         _______,
-                                                _______,_______,     _______
+                        _______,_______,QK_BOOT,                                     KC_RGUI,KC_RALT ,KC_RCTL,
+                                            _______,_______,_______,     _______,_______,_______,
+                                                    _______,_______
         ),
     [_MOUSE] = LAYOUT_5x6(
         _______,_______,_______,_______,_______,_______,                    _______,_______,_______,_______,_______,_______,
         _______,_______,_______,_______,_______,_______,                    _______,_______,_______,_______,_______,_______,
         _______,_______,_______,_______,_______,_______, KC_MUTE, KC_HOME,  _______,_______,_______,_______,_______,_______,
-        _______,_______,_______,_______,SNIPING,DRGSCRL,                    _______,_______,_______,_______,_______,_______,
-                        _______,_______,                                                    _______ ,_______,
-                                                _______, KC_BTN1,           _______,
-                                                KC_BTN3, KC_BTN2,        _______,
-                                                _______,_______,    _______
+        _______,_______,_______,_______,_______,_______,                    _______,_______,_______,_______,_______,_______,
+                        _______,SNIPING,DRGSCRL,                                    _______,_______ ,_______,
+                                            _______, KC_BTN1,KC_BTN2,     _______,_______,_______,
+                                                     _______, KC_BTN2
         )
 };
 
