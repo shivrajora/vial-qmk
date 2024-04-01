@@ -1,7 +1,7 @@
 // Dactyl Manuform Hotswap
 #pragma once
 
-#include "config_common.h"
+//#include "config_common.h"
 // Basic Config
 
 #ifndef WYLD_QMK_FIRMWARE_CONFIG_H
@@ -19,7 +19,7 @@
 #define SERIAL_PIO_USE_PIO0
 #define SERIAL_USART_TIMEOUT     100  // USART driver timeout. default 100
 #define SERIAL_USART_SPEED 921600
-//#define SERIAL_USART_PIN_SWAP
+#define SERIAL_USART_PIN_SWAP
 
 #define RP2040_BOOTLOADER_DOUBLE_TAP_RESET
 #define RP2040_BOOTLOADER_DOUBLE_TAP_RESET_TIMEOUT 200U
@@ -30,18 +30,24 @@
 #define MATRIX_ROWS 12
 #define MATRIX_COLS 7
 
-#define MATRIX_COL_PINS { GP2, GP3, GP4, GP5, GP6, GP7, GP8 }
-#define MATRIX_ROW_PINS { GP9, GP10, GP11, GP12, GP13, GP14 }
+#define MATRIX_COL_PINS { GP8, GP7, GP6, GP5, GP4, GP3, GP2 }
+#define MATRIX_ROW_PINS { GP14, GP13, GP12, GP11, GP10, GP9 }
 
 #define DIODE_DIRECTION COL2ROW
 
 #define SPLIT_POINTING_ENABLE
-#define ROTATIONAL_TRANSFORM_ANGLE  -25
+#define ROTATIONAL_TRANSFORM_ANGLE 25[]
 #define POINTING_DEVICE_INVERT_Y
-#define POINTING_DEVICE_RIGHT
+#define POINTING_DEVICE_LEFT
 #define PMW33XX_CS_PIN GP21
 #define POINTING_DEVICE_TASK_THROTTLE_MS 1
 #define PMW33XX_LIFTOFF_DISTANCE 0x02
+
+#define POINTING_DEVICE_AUTO_MOUSE_ENABLE
+// only required if not setting mouse layer elsewhere
+#define AUTO_MOUSE_DEFAULT_LAYER 3
+
+#define DYNAMIC_KEYMAP_LAYER_COUNT 5
 
 #define SPLIT_TRANSACTION_IDS_KB RPC_ID_KB_CONFIG_SYNC
 
@@ -54,12 +60,12 @@
 // GP19 -- MOSI pin
 // GP18 -- SCK pin clock Driver
 
-#define ENCODERS_PAD_A {  }
-#define ENCODERS_PAD_B {  }
-#define ENCODER_RESOLUTIONS { 1 }
-#define ENCODERS_PAD_A_RIGHT { GP27 }
-#define ENCODERS_PAD_B_RIGHT { GP28 }
-#define ENCODER_RESOLUTIONS_RIGHT { 2 }
+//#define ENCODERS_PAD_A {  }
+//#define ENCODERS_PAD_B {  }
+//#define ENCODER_RESOLUTIONS { 1 }
+//#define ENCODERS_PAD_A_RIGHT { GP27 }
+//#define ENCODERS_PAD_B_RIGHT { GP28 }
+//#define ENCODER_RESOLUTIONS_RIGHT { 2 }
 
 #ifdef OLED_ENABLE
 #define I2C_DRIVER I2CD1
