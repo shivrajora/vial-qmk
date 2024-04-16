@@ -46,8 +46,6 @@
 
 #define SPLIT_TRANSACTION_IDS_KB RPC_ID_KB_CONFIG_SYNC
 
-#define SPLIT_TRANSACTION_IDS_KB RPC_ID_KB_CONFIG_SYNC
-
 #define POINTING_DEVICE_AUTO_MOUSE_ENABLE
 // only required if not setting mouse layer elsewhere
 #define AUTO_MOUSE_DEFAULT_LAYER 3

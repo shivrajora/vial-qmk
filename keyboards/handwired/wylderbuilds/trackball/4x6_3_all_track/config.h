@@ -1,7 +1,7 @@
 // Dactyl Manuform Hotswap
 #pragma once
 
-#include "config_common.h"
+//#include "config_common.h"
 // Basic Config
 
 #ifndef WYLD_QMK_FIRMWARE_CONFIG_H
@@ -45,6 +45,14 @@
 
 #define SPLIT_TRANSACTION_IDS_KB RPC_ID_KB_CONFIG_SYNC
 
+#define SPLIT_TRANSACTION_IDS_KB RPC_ID_KB_CONFIG_SYNC
+
+#define POINTING_DEVICE_AUTO_MOUSE_ENABLE
+// only required if not setting mouse layer elsewhere
+#define AUTO_MOUSE_DEFAULT_LAYER 3
+
+#define DYNAMIC_KEYMAP_LAYER_COUNT 4
+
 //#define CHARYBDIS_MINIMUM_DEFAULT_DPI 1200
 //#define CHARYBDIS_DEFAULT_DPI_CONFIG_STEP 200
 //#define CHARYBDIS_MINIMUM_SNIPING_DPI 400
@@ -65,7 +73,8 @@
 // GP19 -- MOSI pin
 // GP18 -- SCK pin clock Driver
 #ifdef OLED_ENABLE
-#define I2C_DRIVER I2CD1
+#define SPLIT_MODS_ENABLE
+#define I2C_DRIVER I2CD0
 #define I2C1_SDA_PIN GP16
 #define I2C1_SCL_PIN GP17
 // OLED Options
