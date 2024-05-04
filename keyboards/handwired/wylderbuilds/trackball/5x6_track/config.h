@@ -35,7 +35,7 @@
 
 #define MATRIX_COL_PINS { GP7, GP6, GP5, GP4, GP3, GP2 }
 //#define MATRIX_COL_PINS_RIGHT { GP8, GP7, GP6, GP5, GP4, GP3, GP2 }
-#define MATRIX_ROW_PINS { GP14, GP13, GP11, GP10, GP9, GP8 }
+#define MATRIX_ROW_PINS { GP14, GP13, GP12, GP11, GP10, GP9 }
 //#define MATRIX_ROW_PINS { GP9, GP1, GP12, GP11, GP10, GP9 }
 
 #define DIODE_DIRECTION COL2ROW
@@ -117,28 +117,20 @@
 #define OLED_FADE_OUT_INTERVAL 0
 #endif
 
-#ifdef RGBLIGHT_ENABLE
-//#define SPLIT_LED_STATE_ENABLE
-#define WS2812_PIO_USE_PIO1
-//#define WS2812_PIO_USE_PIO1
-//#define WS2812_PIO_USE_PIO1
-#define RGBLIGHT_LAYERS
-#define WS2812_DI_PIN GP28 // can use trackball jack if not used
-//#define WS2812_EXTERNAL_PULLUP
-#define RGBLED_NUM 24
-//#define DRIVER_LED_TOTAL 34
-#define RGBLED_SPLIT { 12, 12 }
-#define RGBLIGHT_SPLIT
-#define RGBLIGHT_EFFECT_RGB_TEST
-#define RGBLIGHT_EFFECT_BREATHING
-#define RGBLIGHT_EFFECT_RAINBOW_MOOD
-#define RGBLIGHT_EFFECT_SNAKE
-#define RGBLIGHT_EFFECT_TWINKLE
-#define RGBLIGHT_HUE_STEP 8
-#define RGBLIGHT_SAT_STEP 8
-#define RGBLIGHT_VAL_STEP 17
-#define RGBLIGHT_LIMIT_VAL 100
-//#define STM32_SYSCLK KINETIS_SYSCLK_FREQUENCY
+#ifdef RGB_MATRIX_ENABLE
+
+#    define RGB_MATRIX_LED_COUNT 60
+#    define WS2812_PIO_USE_PIO1 // Force the usage of PIO1 peripheral, by default the WS2812 implementation uses the PIO0 peripheral
+#    define SPLIT_TRANSPORT_MIRROR
+#    define RGB_MATRIX_DEFAULT_MODE RGB_MATRIX_SOLID_REACTIVE // Sets the default mode, if none has been set
+#    define RGB_MATRIX_DEFAULT_HUE 33 // Sets the default hue value, if none has been set
+#    define RGB_MATRIX_DEFAULT_SAT 255 // Sets the default saturation value, if none has been set
+#    define RGB_MATRIX_DEFAULT_SPD 50
+#    define WS2812_DI_PIN GP28 // can use trackball jack if not used
+#    define RGB_MATRIX_DEFAULT_VAL RGB_MATRIX_MAXIMUM_BRIGHTNESS
+#    define RGB_DISABLE_WHEN_USB_SUSPENDED
+#    define RGB_MATRIX_KEYPRESSES
+#    define RGB_MATRIX_FRAMEBUFFER_EFFECTS
 #define NOP_FUDGE 0.4  // may not be needed if ws driver loaded
 #endif
 
