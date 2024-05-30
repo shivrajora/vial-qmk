@@ -1,7 +1,7 @@
 // Dactyl Manuform Hotswap
 #pragma once
 
-#include "config_common.h"
+//#include "config_common.h"
 
 //#define PRODUCT_ID 0x0004
 
