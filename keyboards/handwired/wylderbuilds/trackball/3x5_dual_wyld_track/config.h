@@ -30,13 +30,13 @@
 
 /* key matrix size */
 // Columns are doubled-up
-#define MATRIX_ROWS 12
-#define MATRIX_COLS 6
+#define MATRIX_ROWS 8
+#define MATRIX_COLS 5
 
-#define MATRIX_COL_PINS { GP7, GP6, GP5, GP4, GP3, GP2 }
+#define MATRIX_COL_PINS { GP7, GP6, GP5, GP4, GP3 }
 //#define MATRIX_COL_PINS_RIGHT { GP8, GP7, GP6, GP5, GP4, GP3, GP2 }
-#define MATRIX_ROW_PINS { GP14, GP13, GP12, GP11, GP10, GP9 }
-//#define MATRIX_ROW_PINS { GP9, GP1, GP12, GP11, GP10, GP9 }
+#define MATRIX_ROW_PINS { GP12, GP11, GP10, GP9 }
+// #define MATRIX_ROW_PINS_RIGHT { GP12, GP11, GP13, GP9 }
 
 #define DIODE_DIRECTION COL2ROW
 
@@ -71,7 +71,7 @@
 
 #ifdef ENCODER_ENABLE
 #define ENCODERS_PAD_A { GP27 }
-#define ENCODERS_PAD_B { GP28 }
+#define ENCODERS_PAD_B { GP22 }
 #define ENCODER_RESOLUTIONS { 2 }
 #define ENCODERS_PAD_A_RIGHT {  }
 #define ENCODERS_PAD_B_RIGHT {  }
@@ -122,7 +122,7 @@
 
 #ifdef RGB_MATRIX_ENABLE
 
-#    define RGB_MATRIX_LED_COUNT 60
+#    define RGB_MATRIX_LED_COUNT 36
 #    define WS2812_PIO_USE_PIO1 // Force the usage of PIO1 peripheral, by default the WS2812 implementation uses the PIO0 peripheral
 #    define SPLIT_TRANSPORT_MIRROR
 #    define RGB_MATRIX_DEFAULT_MODE RGB_MATRIX_SOLID_REACTIVE // Sets the default mode, if none has been set
