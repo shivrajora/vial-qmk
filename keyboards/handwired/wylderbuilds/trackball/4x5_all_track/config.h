@@ -52,9 +52,9 @@
 #define ENCODERS_PAD_A { }
 #define ENCODERS_PAD_B { }
 #define ENCODER_RESOLUTIONS { }
-#define ENCODERS_PAD_A_RIGHT { GP28 }
-#define ENCODERS_PAD_B_RIGHT { GP27 }
-#define ENCODER_RESOLUTIONS_RIGHT { 2 }
+#define ENCODERS_PAD_A_RIGHT { }
+#define ENCODERS_PAD_B_RIGHT { }
+#define ENCODER_RESOLUTIONS_RIGHT { }
 
 
 //// Sensor Notes ////

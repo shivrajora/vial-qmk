@@ -1,12 +1,12 @@
 {
-  "keyboard_name": "Dactyl-Manuform Wyld Whole Dual Trackball (4x6_3_dual_track)",
+  "keyboard_name": "Dactyl-Manuform 4x5 Whole Trackball",
   "manufacturer": "wylderbuilds",
   "url": "https://wylderbuilds.com",
   "maintainer": "qmk",
   "processor": "RP2040",
   "usb": {
     "vid": "0x9953",
-    "pid": "0x0118",
+    "pid": "0x0210",
     "device_version": "0.0.1"
   },
   "width": 18,
