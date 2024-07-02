@@ -56,7 +56,6 @@
 #define ENCODERS_PAD_B_RIGHT { }
 #define ENCODER_RESOLUTIONS_RIGHT { }
 
-
 //// Sensor Notes ////
 //// Pi Pico pins ////
 // 3V3  -- Power (not 3v3_EN)
