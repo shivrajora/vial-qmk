@@ -40,8 +40,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
             DPI_RMOD,DPI_MOD,DPI_RST,_______,KC_LBRC,                    KC_RBRC,_______,KC_NUM,KC_INS ,KC_SCRL,
             KC_LEFT,KC_UP,KC_DOWN,KC_RGHT, KC_LPRN,                      KC_RPRN,KC_MPRV,KC_MPLY,KC_VOLU,KC_VOLD,
                           WYLD_AUTO_MS_TOG,_______,                                      _______,_______,
-                                        _______,_______,             _______,
-                                        _______,_______,             _______,
+                                        _______,KC_ESC,              _______,
+                                        _______,_______,             KC_ESC,
                                         QK_BOOT,_______,     _______,_______
     ),
     [_MOUSE] = LAYOUT_4x5(
