@@ -37,9 +37,9 @@
 /* key matrix size */
 // Columns are doubled-up
 #define MATRIX_ROWS 14
-#define MATRIX_COLS 6
+#define MATRIX_COLS 7
 
-#define MATRIX_COL_PINS { GP3, GP4, GP5, GP6, GP7, GP8 }
+#define MATRIX_COL_PINS { GP2, GP3, GP4, GP5, GP6, GP7, GP8 }
 #define MATRIX_COL_PINS_RIGHT { GP8, GP7, GP6, GP5, GP4, GP3 }
 #define MATRIX_ROW_PINS { GP9, GP10, GP11, GP12, GP13, GP14, GP15 }
 
