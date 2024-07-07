@@ -6,7 +6,7 @@
   "processor": "RP2040",
   "usb": {
     "vid": "0x9953",
-    "pid": "0x0034",
+    "pid": "0x0234",
     "device_version": "0.0.1"
   },
   "width": 18,
