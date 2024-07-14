@@ -13,6 +13,7 @@ WPM_ENABLE = yes
 EXTRAKEY_ENABLE = yes       # Audio control and System control
 NKRO_ENABLE = yes           # Enable N-Key Rollover
 ENCODER_ENABLE = yes
+ENCODER_MAP_ENABLE = yes
 
 RGBLIGHT_ENABLE = no
 WS2812_DRIVER = vendor

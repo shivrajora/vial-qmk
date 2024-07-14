@@ -66,12 +66,14 @@
 //#define CHARYBDIS_MINIMUM_SNIPING_DPI 400
 //#define CHARYBDIS_SNIPING_DPI_CONFIG_STEP 200
 
-//#define ENCODERS_PAD_A { GP26 }
-//#define ENCODERS_PAD_B { GP27 }
-//#define ENCODER_RESOLUTIONS { 2 }
-//#define ENCODERS_PAD_A_RIGHT { GP26 }
-//#define ENCODERS_PAD_B_RIGHT { GP27 }
-//#define ENCODER_RESOLUTIONS_RIGHT { 2 }
+#ifdef ENCODER_ENABLE
+#define ENCODERS_PAD_A { GP27 }
+#define ENCODERS_PAD_B { GP28 }
+#define ENCODER_RESOLUTIONS { 2 }
+#define ENCODERS_PAD_A_RIGHT { GP27 }
+#define ENCODERS_PAD_B_RIGHT { GP28 }
+#define ENCODER_RESOLUTIONS_RIGHT { 2 }
+#endif
 
 //// Sensor Notes ////
 //// Pi Pico pins ////
