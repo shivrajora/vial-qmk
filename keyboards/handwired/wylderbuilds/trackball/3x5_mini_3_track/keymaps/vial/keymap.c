@@ -1,5 +1,5 @@
 #include QMK_KEYBOARD_H
-#include "4x7_whole_track.h"
+#include "3x5_mini_3_track.h"
 
 #define _QWERTY 0
 #define _LOWER 1
@@ -13,80 +13,90 @@ enum wyld_keycodes {
     WYLD_AUTO_MS_TOG = SAFE_RANGE
 };
 
+// TRACKBALL IN WALL LAYOUT (STANDARD 3X5_3)
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-    [_QWERTY] = LAYOUT_4x6(
-        DRGSCRL, KC_ESC , KC_1, KC_2, KC_3, KC_4, KC_5,                         KC_6, KC_7, KC_8,   KC_9,   KC_0,    KC_LBRC,  KC_RBRC,
-        SNIPING, KC_TAB,  KC_Q, KC_W, KC_E, KC_R, KC_T,                         KC_Y, KC_U, KC_I,   KC_O,   KC_P,    KC_MINS,  KC_EQL,
-        KC_BTN3, KC_LSFT, KC_A, KC_S, KC_D, KC_F, KC_G,                         KC_H, KC_J, KC_K,   KC_L,   KC_SCLN, KC_QUOT,  KC_BTN3,
-        KC_BTN1, KC_LCTL, KC_Z, KC_X, KC_C, KC_V, KC_B,                         KC_N, KC_M, KC_COMM,KC_DOT ,KC_SLSH, KC_BSLS,  KC_BTN1,
-                                         RAISE,   KC_SPC,                     LOWER,
-                                         KC_BSPC, KC_TAB,                     KC_ENT,
-                                         KC_GRV,  KC_HOME,            KC_DEL, KC_LALT
+    [_QWERTY] = LAYOUT_split_3x5_3(
+        KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                        KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,
+        KC_A,    KC_S,    KC_D,    KC_F,    KC_G, KC_MUTE,      KC_HOME, KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN,
+        KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                        KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH,
+                             RAISE,   KC_SPC,  KC_TAB,               KC_HOME, KC_ENT, LOWER,
+                                      KC_LALT, KC_GRV
         ),
 
-    [_LOWER] = LAYOUT_4x6(
-        _______,KC_TILD,KC_EXLM, KC_AT ,KC_HASH,KC_DLR ,KC_PERC,               KC_CIRC,KC_AMPR,KC_ASTR,KC_LPRN,KC_RPRN,KC_DEL, _______,
-        _______,_______,_______,_______,_______,_______,KC_LBRC,               KC_RBRC, KC_P7 , KC_P8 , KC_P9 ,_______,KC_PLUS,_______,
-        _______,_______,KC_HOME,KC_PGUP,KC_PGDN,KC_END ,KC_LPRN,               KC_RPRN, KC_P4 , KC_P5 , KC_P6 ,KC_MINS,KC_PIPE,_______,
-       _______, _______,RGB_VAI,RGB_SAI,RGB_HUI,RGB_MOD,RGB_TOG,               _______, KC_P1 , KC_P2 , KC_P3 ,KC_EQL ,QK_BOOT,_______,
-                                                  _______, KC_BTN1,            _______,
-                                                  KC_BTN3, KC_BTN2,            _______,
-                                                  SNIPING, DRGSCRL,    _______,_______
+    [_LOWER] = LAYOUT_split_3x5_3(
+        KC_EXLM, KC_AT, KC_HASH,  KC_DLR, KC_PERC,                       KC_CIRC,          KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN,
+        DPI_RMOD,DPI_MOD,DPI_RST, _______, _______, KC_MUTE,    _______, WYLD_AUTO_MS_TOG, KC_MINS, KC_EQL,  KC_PIPE, QK_BOOT ,
+        KC_LPRN,  KC_RPRN, _______, SNIPING, DRGSCRL,                    _______,          KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT,
+                            _______, KC_BTN1, KC_BTN3,              _______, _______, _______,
+                                     _______, KC_BTN2
         ),
 
-    [_RAISE] = LAYOUT_4x6(
-        _______,KC_F12 , KC_F1 , KC_F2 , KC_F3 , KC_F4 , KC_F5 ,               KC_F6, KC_F7 , KC_F8 , KC_F9 ,KC_F10 ,KC_F11 ,_______,
-        _______,_______,_______,_______,_______,_______,KC_LBRC,               KC_RBRC,_______,KC_NUM,KC_INS ,KC_SCRL,KC_MUTE,_______,
-        _______,_______,KC_LEFT,KC_UP,KC_DOWN,KC_RGHT,KC_LPRN,                 KC_RPRN,KC_BTN1,KC_BTN3,KC_BTN2,_______,KC_VOLU,_______,
-        QK_BOOT,DPI_RMOD,DPI_MOD,DPI_RST,_______,_______,_______,              _______,_______,_______,_______,_______,WYLD_AUTO_MS_TOG,KC_VOLD,
-                                                _______, _______,            _______,
-                                                _______, _______,            _______,
-                                                _______, _______,    _______,_______
+    [_RAISE] = LAYOUT_split_3x5_3(
+        KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                        KC_6,    KC_7,    KC_8,    KC_9,    KC_0,
+        QK_BOOT, S(KC_0), KC_LCBR, KC_RCBR, KC_EQL, KC_HOME,    _______, KC_MINS, KC_4,    KC_5,    KC_6,    KC_QUOT,
+        DPI_RMOD,DPI_MOD, DPI_RST,_______,_______,                       _______, KC_1,    KC_2,    KC_3,    _______,
+                           _______,  _______, _______,             _______, _______, _______,
+                                     _______, _______
         ),
-    [_MOUSE] = LAYOUT_4x6(
-        _______,_______,_______,_______,_______,_______,_______,               _______,_______,_______,_______,_______,_______,_______,
-        _______,_______,_______,_______,_______,_______,_______,               _______,_______,_______,_______,_______,_______,_______,
-        _______,_______,_______,KC_BTN2,KC_BTN3,KC_BTN1,_______,               _______,KC_BTN1,KC_BTN3,KC_BTN2,_______,_______,_______,
-        _______,_______,_______,_______,_______,_______,_______,               _______,_______,_______,_______,_______,_______,_______,
-                                                _______, KC_BTN1,            _______,
-                                                KC_BTN3, KC_BTN2,            _______,
-                                                SNIPING, DRGSCRL,    _______,_______
+
+    [_MOUSE] = LAYOUT_split_3x5_3(
+        _______, _______, _______, _______, _______,                       _______, _______, _______, _______, _______,
+        _______, KC_BTN2, KC_BTN3, KC_BTN1, KC_BTN2, KC_MUTE,      _______,_______, KC_BTN1, KC_BTN3, KC_BTN2, _______,
+        _______, _______, _______, SNIPING, DRGSCRL,                       _______, _______, _______, _______, _______,
+                             _______, KC_BTN1, KC_BTN3,            _______, _______, _______,
+                                      _______, KC_BTN2
         )
 };
 
-void keyboard_post_init_user(void) {
-#ifdef CONSOLE_ENABLE
-    debug_enable=true;
-    debug_matrix=true;
-    debug_keyboard=true;
-    debug_mouse=true;
-#else
-    debug_enable=false;
-    debug_matrix=false;
-    debug_keyboard=false;
-    debug_mouse=false;
-#endif
-#ifdef RGBLIGHT_ENABLE
-    rgblight_layers = my_rgb_layers;
-#endif
+#ifdef POINTING_DEVICE_COMBINED
+
+static void check_drag(report_mouse_t* mouse_report) {
+    static int16_t scroll_buffer_x = 0;
+    static int16_t scroll_buffer_y = 0;
+
+#    ifdef CHARYBDIS_DRAGSCROLL_REVERSE_X
+    scroll_buffer_x -= mouse_report->x;
+#    else
+    scroll_buffer_x += mouse_report->x;
+#    endif  // CHARYBDIS_DRAGSCROLL_REVERSE_X
+#    ifdef CHARYBDIS_DRAGSCROLL_REVERSE_Y
+    scroll_buffer_y -= mouse_report->y;
+#    else
+    scroll_buffer_y += mouse_report->y;
+#    endif  // CHARYBDIS_DRAGSCROLL_REVERSE_Y
+    mouse_report->x = 0;
+    mouse_report->y = 0;
+    if (abs(scroll_buffer_x) > 6) {
+        mouse_report->h = scroll_buffer_x > 0 ? 1 : -1;
+        scroll_buffer_x = 0;
+    }
+    if (abs(scroll_buffer_y) > 6) {
+        mouse_report->v = scroll_buffer_y > 0 ? 1 : -1;
+        scroll_buffer_y = 0;
+    }
 }
 
-#if defined(ENCODER_MAP_ENABLE)
-const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][2] = {
-    [_QWERTY] =  { ENCODER_CCW_CW(KC_VOLD, KC_VOLU), ENCODER_CCW_CW(KC_MS_WH_UP, KC_MS_WH_DOWN) },
-    [_LOWER] =   { ENCODER_CCW_CW(KC_VOLD, KC_VOLU), ENCODER_CCW_CW(KC_MS_WH_UP, KC_MS_WH_DOWN) },
-    [_RAISE] =   { ENCODER_CCW_CW(KC_VOLD, KC_VOLU), ENCODER_CCW_CW(KC_MS_WH_UP, KC_MS_WH_DOWN) },
-    [_MOUSE] =   { ENCODER_CCW_CW(KC_VOLD, KC_VOLU), ENCODER_CCW_CW(KC_MS_WH_UP, KC_MS_WH_DOWN) },
-};
+report_mouse_t pointing_device_task_combined_user(report_mouse_t left_report, report_mouse_t right_report) {
+    check_drag(&left_report); // updated in trackball.c
+    return pointing_device_combine_reports(left_report, right_report);
+}
 #endif
+
+
 
 
 void pointing_device_init_user(void) {
-    //    set_auto_mouse_layer(<mouse_layer>); // only required if AUTO_MOUSE_DEFAULT_LAYER is not set to index of <mouse_layer>
-    set_auto_mouse_enable(true);         // always required before the auto mouse feature will work
-    set_auto_mouse_enable(false);        // but then disable so it's off by default
+#ifdef POINTING_DEVICE_AUTO_MOUSE_ENABLE
+    set_auto_mouse_enable(true);
+    set_auto_mouse_enable(false);
+#endif
+#ifdef POINTING_DEVICE_COMBINED
+    pointing_device_set_cpi_on_side(true, CHARYBDIS_DRAGSCROLL_DPI); // LEFT
+    pointing_device_set_cpi_on_side(false, 2000);  // RIGHT
+#endif// always required before the auto mouse feature will work
 }
 
+#ifdef POINTING_DEVICE_AUTO_MOUSE_ENABLE
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case WYLD_AUTO_MS_TOG:
@@ -98,6 +108,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             return true; // Process all other keycodes normally
     }
 }
+#endif
 
 
 #ifdef OLED_ENABLE
@@ -106,14 +117,9 @@ oled_rotation_t oled_init_user(oled_rotation_t rotation) {
     if (is_keyboard_left()) {
         return OLED_ROTATION_270;
     }
-#ifdef POINTING_DEVICE_ENABLE
-    return OLED_ROTATION_270;
-#else
     return OLED_ROTATION_0;
-#endif
 }
 
-#ifndef POINTING_DEVICE_ENABLE
 static const char PROGMEM wylderbuilds[] = {
     // 'dark wylderbuilds_oled_name', 128x32
     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
@@ -154,27 +160,31 @@ static void render_wylderbuilds(void) {
     oled_write_raw_P(wylderbuilds, sizeof(wylderbuilds));
 }
 
-#endif
-
-static char layer_names[5][8] = {
-            " BASE\n",
-            "LOWER\n",
-            "RAISE\n",
-            "MOUSE\n",
-            " XTRA\n"
-            };
-
 bool oled_task_user(void) {
-    char* layer_name = layer_names[get_highest_layer(layer_state)];
-
+    oled_set_cursor(0, 3);
     if (is_keyboard_left()) {
-        //        oled_write_P(PSTR("Layer\n"), false);
-        oled_set_cursor(0, 3);
-        oled_write_P(PSTR(layer_name), false);
+//        oled_write_P(PSTR("Layer\n"), false);
 
-        oled_set_cursor(2, 6);
-        oled_write_P(PSTR("WPM "), false);
+        switch (get_highest_layer(layer_state)) {
+            case _QWERTY:
+                oled_write_P(PSTR(" BASE\n"), false);
+                break;
+            case _LOWER:
+                oled_write_P(PSTR("LOWER\n"), false);
+                break;
+            case _RAISE:
+                oled_write_P(PSTR("RAISE\n"), false);
+                break;
+            case _MOUSE:
+                oled_write_P(PSTR("MOUSE\n"), false);
+                break;
+            default:
+                // Or use the write_ln shortcut over adding '\n' to the end of your string
+                oled_write_ln_P(PSTR("Undefined"), false);
+        }
         oled_set_cursor(2, 7);
+        oled_write_P(PSTR("WPM "), false);
+        oled_set_cursor(1, 8);
         oled_write(get_u8_str(get_current_wpm(), ' '), false);
         // Host Keyboard LED Status
 
@@ -186,54 +196,48 @@ bool oled_task_user(void) {
         oled_write_P(led_state.scroll_lock ? PSTR("SCRLK \n") : PSTR("    \n"), false);
     } else {
         // write WPM to right OLED
-#ifdef POINTING_DEVICE_ENABLE
-        char* mode = get_mouse_mode_string();
-        uint16_t dpi = get_current_dpi();
-        oled_set_cursor(2, 3);
-        oled_write_P(PSTR("DPI "), false);
-        oled_set_cursor(0, 5);
-        oled_write_P(PSTR(get_u16_str(dpi, ' ')), false);
-        oled_set_cursor(0, 9);
-        oled_write(PSTR(mode), false);
-#else
         oled_set_cursor(0, 0);
         render_wylderbuilds();
         oled_scroll_left();
-#endif
     }
 
     return false;
 }
 #endif
 
+#if defined(ENCODER_MAP_ENABLE)
+const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][2] = {
+    [_QWERTY] =  { ENCODER_CCW_CW(KC_VOLD, KC_VOLU), ENCODER_CCW_CW(KC_MS_WH_UP, KC_MS_WH_DOWN) },
+    [_LOWER] =   { ENCODER_CCW_CW(KC_VOLD, KC_VOLU), ENCODER_CCW_CW(KC_MS_WH_UP, KC_MS_WH_DOWN) },
+    [_RAISE] =   { ENCODER_CCW_CW(KC_VOLD, KC_VOLU), ENCODER_CCW_CW(KC_MS_WH_UP, KC_MS_WH_DOWN) },
+    [_MOUSE] =   { ENCODER_CCW_CW(KC_VOLD, KC_VOLU), ENCODER_CCW_CW(KC_MS_WH_UP, KC_MS_WH_DOWN) },
+};
+#endif
+
 #ifdef RGBLIGHT_ENABLE
 const rgblight_segment_t PROGMEM querty_layer[] = RGBLIGHT_LAYER_SEGMENTS(
-    {9, 3, HSV_RED},       // Light 4 LEDs, starting with LED 6
+    {12, 3, HSV_RED},       // Light 4 LEDs, starting with LED 6
     {21, 3, HSV_RED}      // Light 4 LEDs, starting with LED 6
 );
 const rgblight_segment_t PROGMEM lower_layer[] = RGBLIGHT_LAYER_SEGMENTS(
-    {9, 3, HSV_BLUE},
+    {12, 3, HSV_BLUE},
     {21, 3, HSV_BLUE}
 );
 const rgblight_segment_t PROGMEM raise_layer[] = RGBLIGHT_LAYER_SEGMENTS(
-    {9, 3, HSV_YELLOW},
+    {12, 3, HSV_YELLOW},
     {21, 3, HSV_YELLOW}
 );
+
 const rgblight_segment_t PROGMEM mouse_layer[] = RGBLIGHT_LAYER_SEGMENTS(
-    {9, 3, HSV_GREEN},
+    {12, 3, HSV_GREEN},
     {21, 3, HSV_GREEN}
 );
-const rgblight_segment_t PROGMEM play_layer[] = RGBLIGHT_LAYER_SEGMENTS(
-    {9, 3, HSV_PURPLE},
-    {21, 3, HSV_PURPLE}
-);
+
 const rgblight_segment_t* const PROGMEM my_rgb_layers[] = RGBLIGHT_LAYERS_LIST(
     querty_layer,    // Overrides caps lock layer
     lower_layer,    // Overrides other layers
-    raise_layer,
-    mouse_layer,
-    play_layer
-    // Overrides other layers
+    raise_layer,     // Overrides other layers
+    mouse_layer      // Overrides other layers
 );
 
 //bool led_update_user(led_t led_state) {
@@ -249,8 +253,6 @@ layer_state_t default_layer_state_set_user(layer_state_t state) {
 layer_state_t layer_state_set_user(layer_state_t state) {
     rgblight_set_layer_state(1, layer_state_cmp(state, _LOWER));
     rgblight_set_layer_state(2, layer_state_cmp(state, _RAISE));
-    rgblight_set_layer_state(3, layer_state_cmp(state, _MOUSE));
-    rgblight_set_layer_state(4, layer_state_cmp(state, 4));
     return state;
 }
 
@@ -259,5 +261,27 @@ layer_state_t layer_state_set_user(layer_state_t state) {
 
 //    rgblight_enable();
 
+
+void keyboard_post_init_user(void) {
+#ifdef RGBLIGHT_ENABLE
+    rgblight_layers = my_rgb_layers;
+//    rgblight_layers = my_rgb_layers;
+//    rgblight_enable_noeeprom(); // Enables RGB, without saving settings
+//    rgblight_sethsv_noeeprom_cyan();
+//    rgblight_mode_noeeprom(RGBLIGHT_MODE_STATIC_LIGHT);
+#endif
+
+#ifdef CONSOLE_ENABLE
+    debug_enable=true;
+    debug_matrix=true;
+    debug_keyboard=true;
+    debug_mouse=true;
+#else
+    debug_enable=false;
+    debug_matrix=false;
+    debug_keyboard=false;
+    debug_mouse=false;
+#endif
+}
 
 
