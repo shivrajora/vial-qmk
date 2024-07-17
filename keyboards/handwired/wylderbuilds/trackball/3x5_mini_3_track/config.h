@@ -36,7 +36,7 @@
 #define MATRIX_COLS 6
 
 //#define MATRIX_COL_PINS_RIGHT { GP6, GP5, GP4, GP3, GP2 }
-#define MATRIX_COL_PINS { GP2, GP3, GP4, GP5, GP6, GP7 }
+#define MATRIX_COL_PINS { GP6, GP5, GP4, GP3, GP2, GP7 }
 #define MATRIX_ROW_PINS { GP9, GP10, GP11, GP12 }
 //#define MATRIX_COL_PINS_RIGHT { GP6, GP5, GP4, GP3, GP2, GP8 }  // Added GP7 so each has 6 columns
 //#define MATRIX_ROW_PINS_RIGHT { GP9, GP10, GP11, GP12, GP13 }
