@@ -22,6 +22,7 @@
 #define SERIAL_PIO_USE_PIO0
 #define SERIAL_USART_TIMEOUT     100  // USART driver timeout. default 100
 #define SERIAL_USART_SPEED 921600
+#define SERIAL_USART_PIN_SWAP
 
 #define RP2040_BOOTLOADER_DOUBLE_TAP_RESET
 #define RP2040_BOOTLOADER_DOUBLE_TAP_RESET_TIMEOUT 200U
@@ -122,6 +123,26 @@
 #define RGBLIGHT_VAL_STEP 17
 #define RGBLIGHT_LIMIT_VAL 100
 //#define STM32_SYSCLK KINETIS_SYSCLK_FREQUENCY
+#define NOP_FUDGE 0.4  // may not be needed if ws driver loaded
+#endif
+
+#define SPLIT_TRANSPORT_MIRROR
+
+#ifdef RGB_MATRIX_ENABLE
+
+#define RGBLIGHT_SPLIT
+#    define RGB_MATRIX_LED_COUNT 66
+#    define WS2812_PIO_USE_PIO1 // Force the usage of PIO1 peripheral, by default the WS2812 implementation uses the PIO0 peripheral
+
+#    define RGB_MATRIX_DEFAULT_MODE RGB_MATRIX_SOLID_REACTIVE // Sets the default mode, if none has been set
+#    define RGB_MATRIX_DEFAULT_HUE 33 // Sets the default hue value, if none has been set
+#    define RGB_MATRIX_DEFAULT_SAT 255 // Sets the default saturation value, if none has been set
+#    define RGB_MATRIX_DEFAULT_SPD 50
+#    define WS2812_DI_PIN GP22 // can use trackball jack if not used
+#    define RGB_MATRIX_DEFAULT_VAL RGB_MATRIX_MAXIMUM_BRIGHTNESS
+#    define RGB_DISABLE_WHEN_USB_SUSPENDED
+#    define RGB_MATRIX_KEYPRESSES
+#    define RGB_MATRIX_FRAMEBUFFER_EFFECTS
 #define NOP_FUDGE 0.4  // may not be needed if ws driver loaded
 #endif
 
