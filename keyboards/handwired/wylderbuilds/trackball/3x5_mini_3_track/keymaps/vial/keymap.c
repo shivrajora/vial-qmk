@@ -25,7 +25,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [_LOWER] = LAYOUT_split_3x5_3(
         KC_EXLM, KC_AT, KC_HASH,  KC_DLR, KC_PERC,                       KC_CIRC,          KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN,
-        DPI_RMOD,DPI_MOD,DPI_RST, _______, _______, KC_MUTE,    _______, WYLD_AUTO_MS_TOG, KC_MINS, KC_EQL,  KC_PIPE, QK_BOOT ,
+        DPI_RMOD,DPI_MOD,DPI_RST, _______, _______, QK_BOOT,    _______, WYLD_AUTO_MS_TOG, KC_MINS, KC_EQL,  KC_PIPE, QK_BOOT ,
         KC_LPRN,  KC_RPRN, _______, SNIPING, DRGSCRL,                    _______,          KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT,
                             _______, KC_BTN1, KC_BTN3,              _______, _______, _______,
                                      _______, KC_BTN2
@@ -33,7 +33,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [_RAISE] = LAYOUT_split_3x5_3(
         KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                        KC_6,    KC_7,    KC_8,    KC_9,    KC_0,
-        QK_BOOT, S(KC_0), KC_LCBR, KC_RCBR, KC_EQL, KC_HOME,    _______, KC_MINS, KC_4,    KC_5,    KC_6,    KC_QUOT,
+        QK_BOOT, S(KC_0), KC_LCBR, KC_RCBR, KC_EQL, KC_HOME,    QK_BOOT, KC_MINS, KC_4,    KC_5,    KC_6,    KC_QUOT,
         DPI_RMOD,DPI_MOD, DPI_RST,_______,_______,                       _______, KC_1,    KC_2,    KC_3,    _______,
                            _______,  _______, _______,             _______, _______, _______,
                                      _______, _______
