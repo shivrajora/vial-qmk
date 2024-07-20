@@ -32,7 +32,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                      KC_GRV,  _______,                                                         KC_P0, KC_KP_DOT,
                                         _______,_______,             _______,
                                         KC_BTN3,KC_BTN1,             _______,
-                                        SNIPING,DRGSCRL,     _______,QK_BOOT
+                                        SNP_TOG,DRG_TOG,     _______,QK_BOOT
     ),
 
     [_RAISE] = LAYOUT_4x5(
@@ -51,7 +51,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                 SNIPING, DRGSCRL,                                                       _______,_______,
                                         _______,_______,             _______,
                                         KC_BTN3,KC_BTN1,             _______,
-                                        SNIPING,DRGSCRL,     _______,_______
+                                        SNP_TOG,DRG_TOG,     _______,_______
         )
 };
 
@@ -100,6 +100,19 @@ void pointing_device_init_user(void) {
 #endif// always required before the auto mouse feature will work
 }
 
+#ifdef POINTING_DEVICE_AUTO_MOUSE_ENABLE
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case WYLD_AUTO_MS_TOG:
+            if (record->event.pressed) {
+                set_auto_mouse_enable(!get_auto_mouse_enable());
+            }
+            return false; // Skip all further processing of this key
+        default:
+            return true; // Process all other keycodes normally
+    }
+}
+#endif
 
 #if defined(ENCODER_MAP_ENABLE)
 // TWO ENCODERS
