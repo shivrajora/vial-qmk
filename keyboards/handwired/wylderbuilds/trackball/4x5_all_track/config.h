@@ -41,12 +41,7 @@
 #define POINTING_DEVICE_TASK_THROTTLE_MS 1
 #define PMW33XX_LIFTOFF_DISTANCE 0x04
 
-
-
-
-
-#        define CHARYBDIS_DRAGSCROLL_BUFFER_SIZE 10
-
+#define CHARYBDIS_DRAGSCROLL_BUFFER_SIZE 10
 
 #define SPLIT_TRANSACTION_IDS_KB RPC_ID_KB_CONFIG_SYNC
 
@@ -75,11 +70,11 @@
 //#define WS2812_PIO_USE_PIO1
 //#define WS2812_PIO_USE_PIO1
 #define RGBLIGHT_LAYERS
-#define WS2812_DI_PIN GP22 // can use trackball jack if not used
+#define WS2812_DI_PIN GP16 // can use trackball jack if not used
 //#define WS2812_EXTERNAL_PULLUP
-#define RGBLED_NUM 24
+#define RGBLED_NUM 16
 //#define DRIVER_LED_TOTAL 34
-#define RGBLED_SPLIT { 12, 12 }
+#define RGBLED_SPLIT { 8, 8 }
 #define RGBLIGHT_SPLIT
 #define RGBLIGHT_EFFECT_RGB_TEST
 #define RGBLIGHT_EFFECT_BREATHING
@@ -95,24 +90,24 @@
 #endif
 
 //// OLED Pins and Driver
-#ifdef OLED_ENABLE
-#define I2C_DRIVER I2CD0
-#define I2C1_SDA_PIN GP16
-#define I2C1_SCL_PIN GP17
-// OLED Options
-#define SPLIT_OLED_ENABLE
-//#define SPLIT_MODS_ENABLE
-#define SPLIT_WPM_ENABLE
-#define OLED_DISPLAY_WIDTH 128
-#define OLED_DISPLAY_HEIGHT 32
-#define OLED_MATRIX_SIZE 512
-#define OLED_RESET -1
-#define OLED_DISPLAY_ADDRESS 0x3C
-#define OLED_BRIGHTNESS 255
-#define OLED_TIMEOUT 32000
-#define OLED_FADE_OUT
-#define OLED_FADE_OUT_INTERVAL 0
-#endif
+//#ifdef OLED_ENABLE
+//#define I2C_DRIVER I2CD0
+//#define I2C1_SDA_PIN GP16
+//#define I2C1_SCL_PIN GP17
+//// OLED Options
+//#define SPLIT_OLED_ENABLE
+////#define SPLIT_MODS_ENABLE
+//#define SPLIT_WPM_ENABLE
+//#define OLED_DISPLAY_WIDTH 128
+//#define OLED_DISPLAY_HEIGHT 32
+//#define OLED_MATRIX_SIZE 512
+//#define OLED_RESET -1
+//#define OLED_DISPLAY_ADDRESS 0x3C
+//#define OLED_BRIGHTNESS 255
+//#define OLED_TIMEOUT 32000
+//#define OLED_FADE_OUT
+//#define OLED_FADE_OUT_INTERVAL 0
+//#endif
 
 // Misc settings
 // Mechanical locking support. Use KC_LCAP, KC_LNUM or KC_LSCR instead in keymap
