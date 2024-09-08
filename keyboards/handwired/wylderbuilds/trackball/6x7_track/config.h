@@ -22,7 +22,7 @@
 #define POINTING_DEVICE_RIGHT
 #define PMW33XX_CS_PIN GP21
 #define POINTING_DEVICE_TASK_THROTTLE_MS 1
-#define PMW33XX_LIFTOFF_DISTANCE 0x03
+#define PMW33XX_LIFTOFF_DISTANCE 0x02
 
 #define POINTING_DEVICE_AUTO_MOUSE_ENABLE
 // only required if not setting mouse layer elsewhere
@@ -52,6 +52,7 @@
 #define MATRIX_COLS 7
 
 #define MATRIX_COL_PINS { GP8, GP7, GP6, GP5, GP4, GP3, GP2 }
+#define RIGHT_MATRIX_COL_PINS { GP3, GP4, GP5, GP6, GP7, GP8, GP2 }
 #define MATRIX_ROW_PINS { GP9, GP10, GP11, GP12, GP13, GP14, GP15 }
 #define DIODE_DIRECTION COL2ROW
 
@@ -62,6 +63,15 @@
 #    define SPLIT_OLED_ENABLE
 #    define SPLIT_LED_STATE_ENABLE
 // End of Basic Config
+
+#ifdef ENCODER_ENABLE
+#define ENCODERS_PAD_A { GP22 }
+#define ENCODERS_PAD_B { GP27 }
+#define ENCODER_RESOLUTIONS { 2 }
+#define ENCODERS_PAD_A_RIGHT { }
+#define ENCODERS_PAD_B_RIGHT { }
+#define ENCODER_RESOLUTIONS_RIGHT {  }
+#endif
 
 #ifdef OLED_ENABLE
 #define I2C_DRIVER I2CD0
