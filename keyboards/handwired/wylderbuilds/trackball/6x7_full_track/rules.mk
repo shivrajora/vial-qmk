@@ -11,12 +11,12 @@ RGBLIGHT_ENABLE = no
 #WS2812_DRIVER = vendor
 #SLEEP_LED_ENABLE = no
 
-ENCODER_ENABLE = yes
-ENCODER_MAP_ENABLE = yes
+ENCODER_ENABLE = no
+ENCODER_MAP_ENABLE = no
 
-OLED_ENABLE = yes
+OLED_ENABLE = no
 #OLED_DRIVER = ssd1306
-WPM_ENABLE = yes
-EXTRAKEY_ENABLE = yes       # Audio control and System control
+WPM_ENABLE = no
+EXTRAKEY_ENABLE = no       # Audio control and System control
 
-OPT_DEFS += -DHAL_USE_I2C=TRUE
+#OPT_DEFS += -DHAL_USE_I2C=TRUE
