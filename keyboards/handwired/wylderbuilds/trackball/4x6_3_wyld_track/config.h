@@ -26,11 +26,11 @@
 
 /* key matrix size */
 // Columns are doubled-up
-#define MATRIX_ROWS 10
+#define MATRIX_ROWS 8
 #define MATRIX_COLS 6
 
 #define MATRIX_COL_PINS { GP2, GP3, GP4, GP5, GP6, GP7 }
-#define MATRIX_ROW_PINS { GP13, GP12, GP11, GP10, GP9 }
+#define MATRIX_ROW_PINS { GP9, GP10, GP11, GP12 }
 #define DIODE_DIRECTION COL2ROW
 
 #define SPLIT_POINTING_ENABLE
@@ -50,12 +50,14 @@
 
 #define SPLIT_TRANSACTION_IDS_KB RPC_ID_KB_CONFIG_SYNC
 
-//#define ENCODERS_PAD_A { }
-//#define ENCODERS_PAD_B { }
-//#define ENCODER_RESOLUTIONS { }
-//#define ENCODERS_PAD_A_RIGHT { GP17, GP15 }
-//#define ENCODERS_PAD_B_RIGHT { GP16, GP14 }
-//#define ENCODER_RESOLUTIONS_RIGHT { 2 }
+#ifdef ENCODER_ENABLE
+#define ENCODERS_PAD_A { GP17 }
+#define ENCODERS_PAD_B { GP16 }
+#define ENCODER_RESOLUTIONS { 2 }
+#define ENCODERS_PAD_A_RIGHT { GP17 }
+#define ENCODERS_PAD_B_RIGHT { GP16 }
+#define ENCODER_RESOLUTIONS_RIGHT { 2 }
+#endif
 
 
 //// Sensor Notes ////
