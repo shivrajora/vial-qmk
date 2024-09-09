@@ -24,7 +24,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [_LOWER] = LAYOUT_4x6(
         KC_TILD,KC_EXLM, KC_AT ,KC_HASH,KC_DLR ,KC_PERC,                        KC_CIRC,KC_AMPR,KC_ASTR,KC_LPRN,KC_RPRN,KC_MUTE,
-        _______,_______,_______,_______,_______,KC_LBRC, _______,     _______,  KC_RBRC, KC_P7 , KC_P8 , KC_P9 ,KC_PLUS,QK_BOOT,
+        DPI_RMOD,DPI_MOD,DPI_RST,_______,_______,KC_LBRC, _______,     _______,  KC_RBRC, KC_P7 , KC_P8 , KC_P9 ,KC_PLUS,QK_BOOT,
         _______,KC_HOME,KC_PGUP,KC_PGDN,KC_END ,KC_LPRN,                        KC_RPRN, KC_P4 , KC_P5 , KC_P6 ,KC_MINS,KC_PIPE,
                         DRGSCRL,SNIPING,                                                         KC_P2 , KC_P3,
                                    _______, KC_BTN1, KC_BTN3,          _______,_______,_______
@@ -33,7 +33,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_RAISE] = LAYOUT_4x6(
         KC_F12 , KC_F1 , KC_F2 , KC_F3 , KC_F4 , KC_F5 ,                        KC_F6, KC_F7 , KC_F8 , KC_F9 ,KC_F10 ,KC_MUTE ,
         QK_BOOT,_______,_______,_______,_______,KC_LBRC, _______,     _______,  KC_RBRC,_______,KC_NUM,KC_INS ,KC_SCRL,KC_MUTE,
-        WYLD_AUTO_MS_TOG,KC_LEFT,KC_UP,KC_DOWN,KC_RGHT,KC_LPRN,                          KC_RPRN,KC_MPRV,KC_MPLY,KC_MNXT,KC_VOLD,KC_VOLU,
+        WYLD_AUTO_MS_TOG,KC_LEFT,KC_UP,KC_DOWN,KC_RGHT,KC_LPRN,                 KC_RPRN,KC_MPRV,KC_MPLY,KC_MNXT,KC_VOLD,KC_VOLU,
                         _______,_______,                                                        _______,_______,
                                     _______,_______,_______,          _______,_______,_______
         ),
