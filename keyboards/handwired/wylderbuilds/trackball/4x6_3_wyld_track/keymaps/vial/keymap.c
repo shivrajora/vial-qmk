@@ -4,11 +4,11 @@
 #define _QWERTY 0
 #define _LOWER 1
 #define _RAISE 2
-#define _MOUSE 2
+#define _MOUSE 3
 
 #define RAISE MO(_RAISE)
 #define LOWER MO(_LOWER)
-
+]]]]]]]]]]]]]]]]]]]]]]
 enum wyld_keycodes {
     WYLD_AUTO_MS_TOG = SAFE_RANGE
 };
@@ -19,13 +19,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_LSFT, KC_A, KC_S, KC_D, KC_F, KC_G, KC_MUTE,       KC_HOME, KC_H, KC_J, KC_K,   KC_L,   KC_SCLN, KC_QUOT,
         KC_LCTL, KC_Z, KC_X, KC_C, KC_V, KC_B,                         KC_N, KC_M, KC_COMM,KC_DOT ,KC_SLSH, DRGSCRL,
                        KC_LBRC, KC_RBRC,                                           KC_EQL, KC_RCTL,
-                                RAISE , KC_SPC, KC_BSPC,      KC_TAB, KC_ENT, LOWER
+                                RAIS]]E , KC_SPC, KC_BSPC,      KC_TAB, KC_ENT, LOWER
         ),
 
     [_LOWER] = LAYOUT_4x6(
         KC_TILD,KC_EXLM, KC_AT ,KC_HASH,KC_DLR ,KC_PERC,                        KC_CIRC,KC_AMPR,KC_ASTR,KC_LPRN,KC_RPRN,KC_MUTE,
-        DPI_RMOD,DPI_MOD,DPI_RST,_______,_______,KC_LBRC, _______,     _______,  KC_RBRC, KC_P7 , KC_P8 , KC_P9 ,KC_PLUS,QK_BOOT,
-        _______,KC_HOME,KC_PGUP,KC_PGDN,KC_END ,KC_LPRN,                        KC_RPRN, KC_P4 , KC_P5 , KC_P6 ,KC_MINS,KC_PIPE,
+        DPI_RMOD,DPI_MOD,DPI_RST,_______,_______,KC_LBRC, _______,     _______, KC_RBRC, KC_P7 , KC_P8 , KC_P9 ,KC_PLUS,QK_BOOT,
+        _______,KC_HOME,KC_PGUP,KC_PGDN,KC_EN1D ,KC_LPRN,                        KC_RPRN, KC_P4 , KC_P5 , KC_P6 ,KC_MINS,KC_PIPE,
                         DRGSCRL,SNIPING,                                                         KC_P2 , KC_P3,
                                    _______, KC_BTN1, KC_BTN3,          _______,_______,_______
         ),
