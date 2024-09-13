@@ -1,5 +1,5 @@
 OLED_ENABLE = yes
-OLED_DRIVER = SSD1306
+OLED_DRIVER = ssd1306
 WPM_ENABLE = yes
 EXTRAKEY_ENABLE = yes       # Audio control and System control
 
