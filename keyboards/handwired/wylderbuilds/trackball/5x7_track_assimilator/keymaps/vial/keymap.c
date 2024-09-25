@@ -36,7 +36,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______, _______,_______,_______,_______,_______,_______,                   _______, KC_P1 , KC_P2 , KC_P3 ,KC_EQL ,KC_UNDS, QK_BOOT,
                                  _______,KC_PSCR,                                                   _______, KC_P0,
                                                   _______, _______, _______,        _______, _______, _______,
-                                                  _______, _______, _______,        _______, _______, _______,
+                                                  _______, _______, _______,        _______, _______, _______
         ),
 
     [_RAISE] = LAYOUT_manuform_number_row(
@@ -46,7 +46,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         QK_BOOT,_______,RGB_VAI,RGB_SAI,RGB_HUI,RGB_MOD,RGB_TOG,                   _______,_______,_______,_______,_______,_______, _______,
                                 _______,_______,                                                KC_EQL ,_______,
                                                   _______, _______, _______,        _______, _______, _______,
-                                                  _______, _______, _______,        _______, _______, _______,
+                                                  _______, _______, _______,        _______, _______, _______
         ),
     [_MOUSE] = LAYOUT_manuform_number_row(
         _______,_______,_______,_______,_______,_______, _______,                  _______,_______,_______,_______,_______,_______, _______,
@@ -55,7 +55,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______,_______,_______,_______,_______,_______, _______,                  _______,_______,_______,_______,_______,_______, _______,
                                 _______,_______,                                                _______ ,_______,
                                                   _______, _______, _______,        _______, _______, _______,
-                                                  _______, _______, _______,        _______, _______, _______,
+                                                  _______, _______, _______,        _______, _______, _______
     )
 
 };
@@ -84,10 +84,10 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 // ENCODERS
 #ifdef ENCODER_MAP_ENABLE
 const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][2] = {
-    [_QWERTY] =  { ENCODER_CCW_CW(KC_MS_WH_UP, KC_MS_WH_DOWN) },
-    [_LOWER] =   { ENCODER_CCW_CW(KC_VOLU, KC_VOLD) },
-    [_RAISE] =   { ENCODER_CCW_CW(KC_VOLU, KC_VOLD) },
-    [3] =        { ENCODER_CCW_CW(KC_VOLU, KC_VOLD) },
+    [_QWERTY] =  { ENCODER_CCW_CW(KC_VOLD, KC_VOLU), ENCODER_CCW_CW(KC_MS_WH_UP, KC_MS_WH_DOWN) },
+    [_LOWER] =   { ENCODER_CCW_CW(KC_VOLD, KC_VOLU), ENCODER_CCW_CW(KC_MS_WH_UP, KC_MS_WH_DOWN) },
+    [_RAISE] =   { ENCODER_CCW_CW(KC_VOLD, KC_VOLU), ENCODER_CCW_CW(KC_MS_WH_UP, KC_MS_WH_DOWN) },
+    [_MOUSE] =   { ENCODER_CCW_CW(KC_VOLD, KC_VOLU), ENCODER_CCW_CW(KC_MS_WH_UP, KC_MS_WH_DOWN) }
 };
 //#endif
 #endif
@@ -149,9 +149,14 @@ oled_rotation_t oled_init_user(oled_rotation_t rotation) {
     if (is_keyboard_left()) {
         return OLED_ROTATION_270;
     }
+#ifdef POINTING_DEVICE_ENABLE
+    return OLED_ROTATION_270;
+#else
     return OLED_ROTATION_0;
+#endif
 }
 
+#ifndef POINTING_DEVICE_ENABLE
 static const char PROGMEM wylderbuilds[] = {
     // 'dark wylderbuilds_oled_name', 128x32
     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
@@ -192,31 +197,27 @@ static void render_wylderbuilds(void) {
     oled_write_raw_P(wylderbuilds, sizeof(wylderbuilds));
 }
 
+#endif
+
+static char layer_names[5][8] = {
+            " BASE\n",
+            "LOWER\n",
+            "RAISE\n",
+            "MOUSE\n",
+            " XTRA\n"
+            };
+
 bool oled_task_user(void) {
-    oled_set_cursor(0, 3);
+    char* layer_name = layer_names[get_highest_layer(layer_state)];
+
     if (is_keyboard_left()) {
         //        oled_write_P(PSTR("Layer\n"), false);
+        oled_set_cursor(0, 3);
+        oled_write_P(PSTR(layer_name), false);
 
-        switch (get_highest_layer(layer_state)) {
-            case _QWERTY:
-                oled_write_P(PSTR(" BASE\n"), false);
-                break;
-            case _LOWER:
-                oled_write_P(PSTR("LOWER\n"), false);
-                break;
-            case _RAISE:
-                oled_write_P(PSTR("RAISE\n"), false);
-                break;
-//            case _MOUSE:
-//                oled_write_P(PSTR("MOUSE\n"), false);
-//                break;
-            default:
-                // Or use the write_ln shortcut over adding '\n' to the end of your string
-                oled_write_ln_P(PSTR("Undefined"), false);
-        }
-        oled_set_cursor(2, 7);
+        oled_set_cursor(2, 6);
         oled_write_P(PSTR("WPM "), false);
-        oled_set_cursor(1, 8);
+        oled_set_cursor(2, 7);
         oled_write(get_u8_str(get_current_wpm(), ' '), false);
         // Host Keyboard LED Status
 
@@ -228,9 +229,20 @@ bool oled_task_user(void) {
         oled_write_P(led_state.scroll_lock ? PSTR("SCRLK \n") : PSTR("    \n"), false);
     } else {
         // write WPM to right OLED
+#ifdef POINTING_DEVICE_ENABLE
+        char* mode = get_mouse_mode_string();
+        uint16_t dpi = get_current_dpi();
+        oled_set_cursor(2, 3);
+        oled_write_P(PSTR("DPI "), false);
+        oled_set_cursor(0, 5);
+        oled_write_P(PSTR(get_u16_str(dpi, ' ')), false);
+        oled_set_cursor(0, 9);
+        oled_write(PSTR(mode), false);
+#else
         oled_set_cursor(0, 0);
         render_wylderbuilds();
         oled_scroll_left();
+#endif
     }
 
     return false;

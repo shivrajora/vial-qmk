@@ -41,10 +41,10 @@
 
 // RP2040 Settings
 #define RP2040_BOOTLOADER_DOUBLE_TAP_RESET
-#define RP2040_BOOTLOADER_DOUBLE_TAP_RESET_TIMEOUT 200U
-#define RP2040_BOOTLOADER_DOUBLE_TAP_RESET_LED_MASK 0U
+#define RP2040_BOOTLOADER_DOUBLE_TAP_RESET_LED GP17
+#define RP2040_BOOTLOADER_DOUBLE_TAP_RESET_TIMEOUT 1000U
 
-#define USB_VBUS_PIN GP27
+//#define USB_VBUS_PIN GP27
 /* key matrix size */
 // Rows are doubled-up
 #define MATRIX_ROWS 14
@@ -58,24 +58,26 @@
 #define SPLIT_HAND_PIN GP0
 
 //#    define MASTER_RIGHT
-#    define SPLIT_MODS_ENABLE
-#    define SPLIT_WPM_ENABLE
-#    define SPLIT_LAYER_STATE_ENABLE
-#    define SPLIT_OLED_ENABLE
-#    define SPLIT_LED_STATE_ENABLE
+//#    define SPLIT_MODS_ENABLE
+//#    define SPLIT_WPM_ENABLE
+//#    define SPLIT_LAYER_STATE_ENABLE
+//#    define SPLIT_OLED_ENABLE
+//#    define SPLIT_LED_STATE_ENABLE
 // End of Basic Config
 
 #define SPI_DRIVER SPID0
 #define SPI_SCK_PIN GP22
 #define SPI_MISO_PIN GP20
 #define SPI_MOSI_PIN GP23
-#define POINTING_DEVICE_CS_PIN GP21
 #define SPLIT_POINTING_ENABLE
 #define ROTATIONAL_TRANSFORM_ANGLE  -25
 #define POINTING_DEVICE_INVERT_Y
 #define POINTING_DEVICE_RIGHT
+#define PMW33XX_CS_PIN GP21
 #define POINTING_DEVICE_TASK_THROTTLE_MS 1
-#define PMW33XX_LIFTOFF_DISTANCE 0x03
+#define PMW33XX_LIFTOFF_DISTANCE 0x02
+
+#define SPLIT_TRANSACTION_IDS_KB RPC_ID_KB_CONFIG_SYNC
 
 #define POINTING_DEVICE_AUTO_MOUSE_ENABLE
 // only required if not setting mouse layer elsewhere
@@ -84,6 +86,7 @@
 #define DYNAMIC_KEYMAP_LAYER_COUNT 5
 
 #ifdef RGB_MATRIX_ENABLE
+#define RGBLED_NUM 72
 #    define WS2812_PIO_USE_PIO1 // Force the usage of PIO1 peripheral, by default the WS2812 implementation uses the PIO0 peripheral
 #    define SPLIT_TRANSPORT_MIRROR
 #    define RGB_MATRIX_DEFAULT_MODE RGB_MATRIX_SOLID_REACTIVE // Sets the default mode, if none has been set
@@ -94,6 +97,7 @@
 #    define RGB_DISABLE_WHEN_USB_SUSPENDED
 #    define RGB_MATRIX_KEYPRESSES
 #    define RGB_MATRIX_FRAMEBUFFER_EFFECTS
+#define NOP_FUDGE 0.4  // may not be needed if ws driver loaded
 #endif
 
 #ifdef OLED_ENABLE
@@ -116,34 +120,34 @@
 #endif
 
 #ifdef ENCODER_ENABLE
-#define ENCODERS_PAD_A { }
-#define ENCODERS_PAD_B { }
+#define ENCODERS_PAD_A { GP16 }
+#define ENCODERS_PAD_B { GP18 }
 #define ENCODER_RESOLUTIONS { 2 }
-#define ENCODERS_PAD_A_RIGHT { GP27 }
-#define ENCODERS_PAD_B_RIGHT { GP28 }
+#define ENCODERS_PAD_A_RIGHT { GP16 }
+#define ENCODERS_PAD_B_RIGHT { GP18 }
 #define ENCODER_RESOLUTIONS_RIGHT { 2 }
 #endif
 
-#ifdef RGBLIGHT_ENABLE
-#define WS2812_PIO_USE_PIO1
+//#ifdef RGBLIGHT_ENABLE
 //#define WS2812_PIO_USE_PIO1
-//#define WS2812_PIO_USE_PIO1
-#define RGBLIGHT_LAYERS
-#define WS2812_DI_PIN GP22 // can use trackball jack if not used
-//#define WS2812_EXTERNAL_PULLUP
-#define RGBLED_NUM 36
-//#define DRIVER_LED_TOTAL 34
-#define RGBLED_SPLIT { 18, 18 }
-#define RGBLIGHT_SPLIT
-#define RGBLIGHT_EFFECT_RGB_TEST
-#define RGBLIGHT_EFFECT_BREATHING
-#define RGBLIGHT_EFFECT_RAINBOW_MOOD
-#define RGBLIGHT_EFFECT_SNAKE
-#define RGBLIGHT_EFFECT_TWINKLE
-#define RGBLIGHT_HUE_STEP 8
-#define RGBLIGHT_SAT_STEP 8
-#define RGBLIGHT_VAL_STEP 17
-#define RGBLIGHT_LIMIT_VAL 100
-//#define STM32_SYSCLK KINETIS_SYSCLK_FREQUENCY
-#define NOP_FUDGE 0.4  // may not be needed if ws driver loaded
-#endif
+////#define WS2812_PIO_USE_PIO1
+////#define WS2812_PIO_USE_PIO1
+//#define RGBLIGHT_LAYERS
+////#define WS2812_DI_PIN GP22 // can use trackball jack if not used
+////#define WS2812_EXTERNAL_PULLUP
+//#define RGBLED_NUM 36
+////#define DRIVER_LED_TOTAL 34
+//#define RGBLED_SPLIT { 18, 18 }
+//#define RGBLIGHT_SPLIT
+//#define RGBLIGHT_EFFECT_RGB_TEST
+//#define RGBLIGHT_EFFECT_BREATHING
+//#define RGBLIGHT_EFFECT_RAINBOW_MOOD
+//#define RGBLIGHT_EFFECT_SNAKE
+//#define RGBLIGHT_EFFECT_TWINKLE
+//#define RGBLIGHT_HUE_STEP 8
+//#define RGBLIGHT_SAT_STEP 8
+//#define RGBLIGHT_VAL_STEP 17
+//#define RGBLIGHT_LIMIT_VAL 100
+////#define STM32_SYSCLK KINETIS_SYSCLK_FREQUENCY
+//#define NOP_FUDGE 0.4  // may not be needed if ws driver loaded
+//#endif
