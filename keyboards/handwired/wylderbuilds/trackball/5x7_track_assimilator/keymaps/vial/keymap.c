@@ -25,8 +25,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______, KC_CAPS , KC_A   , KC_S  , KC_D  , KC_F  , KC_G  ,                    KC_H  , KC_J   , KC_K   , KC_L  ,KC_SCLN, KC_RCTL, _______,
         _______, KC_LSFT , KC_Z   , KC_X  , KC_C  , KC_V  , KC_B  ,                    KC_N  , KC_M   , KC_COMM, KC_DOT,KC_SLSH, KC_RSFT  , _______,
                                     KC_LBRC,KC_RBRC,                                                    KC_PLUS, KC_EQL,
-                                                     RAISE, KC_SPC, KC_BSPC,       KC_LCTL, KC_ENT, LOWER,
-                                                     KC_TAB, KC_BSPC, KC_DEL,      KC_PGUP, KC_PGDN, KC_LALT
+                                                     RAISE, KC_SPC, KC_BSPC,             LOWER,
+                                                     KC_TAB, KC_BSPC, KC_DEL,            KC_ENT,
+                                                                                KC_RCTL, KC_RALT
         ),
 
     [_LOWER] = LAYOUT_manuform_number_row(
@@ -35,8 +36,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______, _______,KC_HOME,KC_PGUP,KC_PGDN,KC_END ,KC_LPRN,                   KC_RPRN, KC_P4 , KC_P5 , KC_P6 ,KC_MINS,KC_PIPE, _______,
         _______, _______,_______,_______,_______,_______,_______,                   _______, KC_P1 , KC_P2 , KC_P3 ,KC_EQL ,KC_UNDS, QK_BOOT,
                                  _______,KC_PSCR,                                                   _______, KC_P0,
-                                                  _______, _______, _______,        _______, _______, _______,
-                                                  _______, _______, _______,        _______, _______, _______
+                                                  _______, _______, _______,           _______,
+                                                  _______, _______, _______,           _______,
+                                                                              _______, _______
         ),
 
     [_RAISE] = LAYOUT_manuform_number_row(
@@ -45,8 +47,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______,_______,KC_LEFT,KC_UP  ,KC_DOWN,KC_RGHT,KC_LPRN,                   KC_RPRN,KC_MPRV,KC_MPLY,KC_MNXT,_______,KC_VOLU, KC_VOLD,
         QK_BOOT,_______,RGB_VAI,RGB_SAI,RGB_HUI,RGB_MOD,RGB_TOG,                   _______,_______,_______,_______,_______,_______, _______,
                                 _______,_______,                                                KC_EQL ,_______,
-                                                  _______, _______, _______,        _______, _______, _______,
-                                                  _______, _______, _______,        _______, _______, _______
+                                                  _______, _______, _______,           _______,
+                                                  _______, _______, _______,           _______,
+                                                                              _______, _______
         ),
     [_MOUSE] = LAYOUT_manuform_number_row(
         _______,_______,_______,_______,_______,_______, _______,                  _______,_______,_______,_______,_______,_______, _______,
@@ -54,8 +57,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______,_______,_______,_______,_______,_______,_______,                   _______,_______,_______,_______,_______,_______, _______,
         _______,_______,_______,_______,_______,_______, _______,                  _______,_______,_______,_______,_______,_______, _______,
                                 _______,_______,                                                _______ ,_______,
-                                                  _______, _______, _______,        _______, _______, _______,
-                                                  _______, _______, _______,        _______, _______, _______
+                                                  _______, _______, _______,           _______,
+                                                  _______, _______, _______,           _______,
+                                                                              _______, _______
     )
 
 };
