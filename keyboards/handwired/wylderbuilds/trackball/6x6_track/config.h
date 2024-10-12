@@ -14,7 +14,7 @@
 //#define PRODUCT_ID 0x0002
 
 #define USE_SERIAL
-#define SPLIT_HAND_PIN      GP26  // high = left, low = right
+//#define SPLIT_HAND_PIN      GP26  // high = left, low = right
 //#define	SPLIT_HAND_PIN_LOW_IS_LEFT
 //#define SPLIT_HAND_MATRIX_GRID GP9, GP8
 //#define MASTER_RIGHT
@@ -22,13 +22,8 @@
 
 
 // Using Serial instead of I2C
-#define SERIAL_USART_FULL_DUPLEX 
-#define SERIAL_USART_TX_PIN GP0
-#define SERIAL_USART_RX_PIN GP1
-#define SERIAL_PIO_USE_PIO0
-#define SERIAL_USART_TIMEOUT     100  // USART driver timeout. default 100
-#define SERIAL_USART_SPEED 921600
-#define SERIAL_USART_PIN_SWAP
+#define SOFT_SERIAL_PIN GP28
+#define SPLIT_HAND_PIN GP0
 
 #define RP2040_BOOTLOADER_DOUBLE_TAP_RESET
 #define RP2040_BOOTLOADER_DOUBLE_TAP_RESET_TIMEOUT 200U
@@ -37,14 +32,18 @@
 /* key matrix size */
 // Columns are doubled-up
 #define MATRIX_ROWS 14
-#define MATRIX_COLS 7
+#define MATRIX_COLS 8
 
-#define MATRIX_COL_PINS { GP2, GP3, GP4, GP5, GP6, GP7, GP8 }
-#define MATRIX_COL_PINS_RIGHT { GP8, GP7, GP6, GP5, GP4, GP3, GP2 }
-#define MATRIX_ROW_PINS { GP9, GP10, GP11, GP12, GP13, GP14, GP15 }
+#define MATRIX_ROW_PINS { GP2, GP3, GP8, GP4, GP13, GP9, GP14 }
+#define MATRIX_COL_PINS { GP1, GP10, GP11, GP12, GP7, GP6, GP5, GP19 }
+#define DIODE_DIRECTION ROW2COL
 
-#define DIODE_DIRECTION COL2ROW
+//#define DIODE_DIRECTION COL2ROW
 
+#define SPI_DRIVER SPID0
+#define SPI_SCK_PIN GP22
+#define SPI_MISO_PIN GP20
+#define SPI_MOSI_PIN GP23
 #define SPLIT_POINTING_ENABLE
 #define ROTATIONAL_TRANSFORM_ANGLE  -25
 #define POINTING_DEVICE_INVERT_Y
@@ -87,8 +86,8 @@
 //// OLED Pins and Driver
 #ifdef OLED_ENABLE
 #define I2C_DRIVER I2CD1
-#define I2C1_SDA_PIN GP12
-#define I2C1_SCL_PIN GP13
+#define I2C1_SDA_PIN GP24
+#define I2C1_SCL_PIN GP25
 // OLED Options
 #define SPLIT_OLED_ENABLE
 #define SPLIT_WPM_ENABLE
