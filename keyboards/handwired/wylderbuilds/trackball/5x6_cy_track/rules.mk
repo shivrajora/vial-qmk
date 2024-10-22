@@ -16,7 +16,7 @@ POINTING_DEVICE_DRIVER = pmw3360
 ##OLED_DRIVER = SSD1306
 
 
-WPM_ENABLE = yes
+#WPM_ENABLE = yes
 #EXTRAKEY_ENABLE = yes       # Audio control and System control
 #
 #ENCODER_ENABLE = yes
