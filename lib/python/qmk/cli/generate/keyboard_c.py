@@ -31,10 +31,8 @@ def _gen_led_config(info_data):
 
     led_layout = info_data[config_type]['layout']
     for index, led_data in enumerate(led_layout):
-        print('index', index)
         if 'matrix' in led_data:
             row, col = led_data['matrix']
-            print('row', row, 'col', col)
             matrix[row][col] = str(index)
         pos.append(f'{{{led_data.get("x", 0)}, {led_data.get("y", 0)}}}')
         flags.append(str(led_data.get('flags', 0)))
@@ -71,7 +69,6 @@ def _gen_matrix_mask(info_data):
     # Mirror layout macros squashed on top of each other
     for layout_name, layout_data in info_data['layouts'].items():
         for key_data in layout_data['layout']:
-            print(key_data)
             row, col = key_data['matrix']
 
             if row >= rows or col >= cols:
