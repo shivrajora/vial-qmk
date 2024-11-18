@@ -9,6 +9,10 @@
 
 #endif // WYLD_QMK_FIRMWARE_CONFIG_H
 
+//#define VENDOR_ID       0x9953
+//#define PRODUCT_ID      0x0233
+//#define DEVICE_VER      0x0001
+
 #define USE_SERIAL
 #define SPLIT_HAND_PIN      GP26  // high = left, low = right
 
@@ -60,9 +64,9 @@
 // GP19 -- MOSI pin
 // GP18 -- SCK pin clock Driver
 
-#define ENCODERS_PAD_A { GP27 }
-#define ENCODERS_PAD_B { GP28 }
-#define ENCODER_RESOLUTIONS { 2 }
+//#define ENCODERS_PAD_A { GP27 }
+//#define ENCODERS_PAD_B { GP28 }
+//#define ENCODER_RESOLUTIONS { 2 }
 //#define ENCODERS_PAD_A_RIGHT { GP27 }
 //#define ENCODERS_PAD_B_RIGHT { GP28 }
 //#define ENCODER_RESOLUTIONS_RIGHT { 2 }

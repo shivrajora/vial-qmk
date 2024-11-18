@@ -1,6 +1,6 @@
 {
-  "keyboard_name": "Dactyl-Manuform Wyld Trackball (5x6_track)",
-  "manufacturer": "wylderbuilds",
+  "keyboard_name": "Wylderbuilds 5x7 Dactyl-Manuform",
+  "manufacturer": "Wylderbuilds",
   "url": "https://wylderbuilds.com",
   "maintainer": "qmk",
   "processor": "RP2040",
@@ -14,6 +14,39 @@
   "matrix": {
     "rows": 12,
     "cols": 7
+  },
+  "features": {
+    "bootmagic": true,
+    "command": false,
+    "console": true,
+    "extrakey": true,
+    "mousekey": true,
+    "encoder": true,
+    "nkro": true,
+    "rgb_matrix": false
+  },
+  "encoder": {
+    "rotary": [
+      {
+        "pin_a": "GP27",
+        "pin_b": "GP28",
+        "resolution": 2
+      }
+    ]
+  },
+    "split": {
+    "enabled": true,
+    "encoder": {
+        "right": {
+          "rotary": [
+            {
+              "pin_a": "GP27",
+              "pin_b": "GP28",
+              "resolution": 2
+            }
+          ]
+        }
+    }
   },
   "layouts": {
     "LAYOUT_5x7": {
