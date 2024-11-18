@@ -9,7 +9,7 @@ CONSOLE_ENABLE = no
 OLED_ENABLE = yes
 #OLED_DRIVER = SSD1306
 WPM_ENABLE = yes
-EXTRAKEY_ENABLE = no       # Audio control and System control
+EXTRAKEY_ENABLE = yes       # Audio control and System control
 ENCODER_ENABLE = yes
 ENCODER_MAP_ENABLE = yes
 
