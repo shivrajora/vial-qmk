@@ -300,4 +300,9 @@ void keyboard_post_init_user(void) {
     debug_keyboard=false;
     debug_mouse=false;
 #endif
+
+#ifdef POINTING_DEVICE_COMBINED
+    pointing_device_set_cpi_on_side(true, CHARYBDIS_DRAGSCROLL_DPI); // LEFT
+    pointing_device_set_cpi_on_side(false, 2000);  // RIGHT
+#endif
 }
