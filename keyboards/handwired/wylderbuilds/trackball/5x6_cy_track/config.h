@@ -21,8 +21,7 @@
 #define USB_VBUS_PIN GP27
 
 /* Vial set up */
-#define VIAL_KEYBOARD_UID {0xC4, 0xCC, 0xB4, 0x76, 0x30, 0x16, 0xFC, 0x70}
-
+//
 #define VIAL_UNLOCK_COMBO_ROWS { 10, 10 }
 #define VIAL_UNLOCK_COMBO_COLS { 3, 4 }
 
@@ -44,8 +43,8 @@
 #define CHARYBDIS_DRAGSCROLL_REVERSE_Y
 #define POINTING_DEVICE_TASK_THROTTLE_MS 1
 //#define CHARYBDIS_CONFIG_DUAL_SYNC
-#define PMW3360_LIFTOFF_DISTANCE 0x03 //default 0x02, 2mm liftoff distance
-
+//#define PMW3360_LIFTOFF_DISTANCE 0x03 //default 0x02, 2mm liftoff distance
+//
 //#include "config_common.h"
 // Basic Config
 #define SPLIT_POINTING_ENABLE
@@ -83,16 +82,16 @@
 #define NOP_FUDGE 0.4  // may not be needed if ws driver loaded
 #endif
 
-#define SPLIT_MODS_ENABLE
+//#define SPLIT_MODS_ENABLE
 
 #ifdef OLED_ENABLE
 #define I2C_DRIVER I2CD0
 #define I2C1_SDA_PIN GP24
 #define I2C1_SCL_PIN GP25
-#define RGBLIGHT_LAYERS
+//#define RGBLIGHT_LAYERS
 // OLED Options
-#define SPLIT_OLED_ENABLE
-#define SPLIT_WPM_ENABLE
+//#define SPLIT_OLED_ENABLE
+//#define SPLIT_WPM_ENABLE
 #define OLED_DISPLAY_WIDTH 128
 #define OLED_DISPLAY_HEIGHT 32
 #define OLED_MATRIX_SIZE 512
@@ -104,11 +103,11 @@
 #define OLED_FADE_OUT_INTERVAL 0
 #endif
 
-#ifdef ENCODER_ENABLE
-#define ENCODERS_PAD_A { GP16 }
-#define ENCODERS_PAD_B { GP18 }
-#define ENCODER_RESOLUTIONS { 2 }
-#define ENCODERS_PAD_A_RIGHT { GP16 }
-#define ENCODERS_PAD_B_RIGHT { GP18 }
-#define ENCODER_RESOLUTIONS_RIGHT { 2 }
-#endif
+//#ifdef ENCODER_ENABLE
+//#define ENCODERS_PAD_A { GP16 }
+//#define ENCODERS_PAD_B { GP18 }
+//#define ENCODER_RESOLUTIONS { 2 }
+//#define ENCODERS_PAD_A_RIGHT { GP16 }
+//#define ENCODERS_PAD_B_RIGHT { GP18 }
+//#define ENCODER_RESOLUTIONS_RIGHT { 2 }
+//#endif
