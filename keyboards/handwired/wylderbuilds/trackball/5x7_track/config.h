@@ -13,6 +13,8 @@
 //#define PRODUCT_ID      0x0233
 //#define DEVICE_VER      0x0001
 
+//#define VIAL_KEYBOARD_UID {0xC4, 0xCC, 0xB4, 0x76, 0x30, 0x16, 0xFC, 0x70}
+
 #define USE_SERIAL
 #define SPLIT_HAND_PIN      GP26  // high = left, low = right
 
@@ -51,7 +53,7 @@
 // only required if not setting mouse layer elsewhere
 #define AUTO_MOUSE_DEFAULT_LAYER 3
 
-#define DYNAMIC_KEYMAP_LAYER_COUNT 5
+//#define DYNAMIC_KEYMAP_LAYER_COUNT 5
 
 #define SPLIT_TRANSACTION_IDS_KB RPC_ID_KB_CONFIG_SYNC
 
@@ -75,10 +77,10 @@
 #define I2C_DRIVER I2CD0
 #define I2C1_SDA_PIN GP16
 #define I2C1_SCL_PIN GP17
-#define RGBLIGHT_LAYERS
+//#define RGBLIGHT_LAYERS
 // OLED Options
-#define SPLIT_OLED_ENABLE
-#define SPLIT_WPM_ENABLE
+//#define SPLIT_OLED_ENABLE
+//#define SPLIT_WPM_ENABLE
 #define OLED_DISPLAY_WIDTH 128
 #define OLED_DISPLAY_HEIGHT 32
 #define OLED_MATRIX_SIZE 512
@@ -92,8 +94,8 @@
 
 // Misc settings
 // Mechanical locking support. Use KC_LCAP, KC_LNUM or KC_LSCR instead in keymap
-#define LOCKING_SUPPORT_ENABLE
-// Locking resynchronize hack
-#define LOCKING_RESYNC_ENABLE// Enables This makes it easier for fast typists to use dual-function keys
-#define PERMISSIVE_HOLD
+//#define LOCKING_SUPPORT_ENABLE
+//// Locking resynchronize hack
+//#define LOCKING_RESYNC_ENABLE// Enables This makes it easier for fast typists to use dual-function keys
+//#define PERMISSIVE_HOLD
 // End of Basic Config

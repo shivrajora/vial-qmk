@@ -18,36 +18,37 @@
   "features": {
     "bootmagic": true,
     "command": false,
-    "console": true,
     "extrakey": true,
     "mousekey": true,
     "encoder": true,
+    "encoder_map": true,
     "nkro": true,
+    "oled": true,
+    "wpm": true,
+    "pointing_device": true,
     "rgb_matrix": false
   },
-  "encoder": {
-    "rotary": [
-      {
-        "pin_a": "GP27",
-        "pin_b": "GP28",
-        "resolution": 2
-      }
-    ]
-  },
-    "split": {
-    "enabled": true,
     "encoder": {
-        "right": {
-          "rotary": [
-            {
-              "pin_a": "GP27",
-              "pin_b": "GP28",
-              "resolution": 2
-            }
-          ]
-        }
-    }
-  },
+        "enabled": true,
+        "rotary": [
+            {"pin_a": "GP15", "pin_b": "GP22", "resolution": 2}
+        ]
+    },
+    "split": {
+      "enabled": true,
+      "serial": {
+          "driver": "vendor"
+      },
+      "transport": {
+          "protocol": "serial",
+          "sync": {
+            "oled": true,
+            "wpm": true,
+            "layer_state": true,
+            "modifiers": true
+          }
+      }
+    },
   "layouts": {
     "LAYOUT_5x7": {
       "layout": [

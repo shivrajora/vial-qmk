@@ -1,6 +1,10 @@
 #include QMK_KEYBOARD_H
 #include "5x7_track.h"
 
+#ifdef CONSOLE_ENABLE
+#include "print.h"
+#endif
+
 #define _QWERTY 0
 #define _LOWER 1
 #define _RAISE 2
@@ -99,12 +103,32 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
 // TWO ENCODERS
 const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][2] = {
-    [_QWERTY] =  { ENCODER_CCW_CW(KC_VOLD, KC_VOLU), ENCODER_CCW_CW(QK_MOUSE_WHEEL_UP, QK_MOUSE_WHEEL_DOWN) },
-    [_LOWER] =   { ENCODER_CCW_CW(KC_VOLD, KC_VOLU), ENCODER_CCW_CW(QK_MOUSE_WHEEL_UP, QK_MOUSE_WHEEL_DOWN) },
-    [_RAISE] =   { ENCODER_CCW_CW(KC_VOLD, KC_VOLU), ENCODER_CCW_CW(QK_MOUSE_WHEEL_UP, QK_MOUSE_WHEEL_DOWN) },
-    [_MOUSE] =   { ENCODER_CCW_CW(KC_VOLD, KC_VOLU), ENCODER_CCW_CW(QK_MOUSE_WHEEL_UP, QK_MOUSE_WHEEL_DOWN) },
+    [_QWERTY] =  { ENCODER_CCW_CW(KC_VOLU, KC_VOLD), ENCODER_CCW_CW(KC_PGUP, KC_PGDN) },
+    [_LOWER] =   { ENCODER_CCW_CW(KC_VOLU, KC_VOLD), ENCODER_CCW_CW(KC_PGUP, KC_PGDN) },
+    [_RAISE] =   { ENCODER_CCW_CW(KC_VOLU, KC_VOLD), ENCODER_CCW_CW(KC_PGUP, KC_PGDN) },
+    [_MOUSE] =   { ENCODER_CCW_CW(KC_VOLU, KC_VOLD), ENCODER_CCW_CW(KC_PGUP, KC_PGDN) },
 };
 #endif
+
+//#ifdef ENCODER_ENABLE
+//bool encoder_update_user(uint8_t index, bool clockwise) {
+////    if (is_keyboard_left()) {
+//    print("encoder spinning");
+//        if (clockwise) {
+//            tap_code(KC_VOLD);
+//        } else {
+//            tap_code(KC_VOLU);
+//        }
+////    } else {
+////        if (clockwise) {
+////            tap_code(KC_PGUP);
+////        } else {
+////            tap_code(KC_PGDN);
+////        }
+////    }
+//    return false;
+//}
+//#endif
 
 #ifdef OLED_ENABLE
 
