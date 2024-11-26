@@ -68,9 +68,9 @@
   r3c5, r3c4, r3c3, r3c2, r3c1, r3c0, r1c1,  r8c8,  r10c7, r10c8, r10c9, r10c10, r10c11, r10c12,  \
   r2c5, r2c4, r2c3, r2c2, r2c1, r2c0,               r9c7,  r9c8,  r9c9,  r9c10,  r9c11,  r9c12,   \
               r1c3, r1c2,                                         r8c9,  r8c10,  \
-                          r0c3, r0c2,                 r7c7,   \
-                            r0c7, r0c1,            r7c8,  \
-                              r0c6, r0c0,      r7c9 \
+                          r0c3, r0c2,                 r7c10,   \
+                            r0c7, r0c1,            r7c9,  \
+                              r0c6, r0c0,      r7c8 \
 ) \
 { \
     { r0c0, r0c1, r0c2, r0c3, KC_NO, KC_NO, r0c6, r0c7 }, \

@@ -5,6 +5,8 @@
 #include QMK_KEYBOARD_H
 #include "trackball.h"
 #include "5x6_cy_track.h"
+#include "print.h"
+#include <lib/lib8tion/lib8tion.h>
 
 #define _QWERTY 0
 #define _LOWER 1
@@ -25,7 +27,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_QWERTY] = LAYOUT_manuform_5x6(
         KC_ESC  , KC_1   , KC_2  , KC_3  , KC_4  , KC_5 ,                    KC_6  , KC_7   , KC_8   , KC_9  , KC_0  , KC_LBRC ,
         KC_TAB  , KC_Q   , KC_W  , KC_E  , KC_R  , KC_T ,                    KC_Y  , KC_U   , KC_I   , KC_O  , KC_P  , KC_QUOT,
-        KC_CAPS , KC_A   , KC_S  , KC_D  , KC_F  , KC_G , KC_HOME,  KC_MUTE, KC_H  , KC_J   , KC_K   , KC_L  ,KC_SCLN, KC_RCTL,
+        KC_CAPS , KC_A   , KC_S  , KC_D  , KC_F  , KC_G , KC_MUTE,  KC_HOME, KC_H  , KC_J   , KC_K   , KC_L  ,KC_SCLN, KC_RCTL,
         KC_LSFT , KC_Z   , KC_X  , KC_C  , KC_V  , KC_B ,                    KC_N  , KC_M   , KC_COMM, KC_DOT,KC_SLSH, KC_RSFT,
                            KC_LBRC,KC_RBRC,                                                    KC_PLUS, KC_EQL,
                                                 RAISE,   KC_SPC,              LOWER,
@@ -142,6 +144,24 @@ void pointing_device_init_user(void) {
 }
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    int16_t angle = -25;
+
+    if (angle < 0) {
+        angle = angle + 360;
+    }
+
+    uint16_t theta = (uint16_t) angle / 360.0 * 32768;
+
+    int16_t result = sin16(theta);
+    int16_t cos_result = cos16(theta);
+    uprintf("angle %d: sin %d, cos %d\n", angle, result / 3276, cos_result / 3276);
+//    theta = 16384;
+//    result = sin16(theta);
+//    uprintf("angle 16384: %f\n", result / 32768);
+//    theta = 32768;
+//    result = sin16(theta);
+//    uprintf("angle 32768: %f\n", result / 32768);
+
     switch (keycode) {
         case WYLD_AUTO_MS_TOG:
             if (record->event.pressed) {
@@ -151,22 +171,23 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         default:
             return true; // Process all other keycodes normally
     }
+
 }
 #endif
 
 // ENCODERS
 #ifdef ENCODER_MAP_ENABLE
 const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][2] = {
-    [_QWERTY] =  { ENCODER_CCW_CW(KC_VOLD, KC_VOLU), ENCODER_CCW_CW(KC_MS_WH_UP, KC_MS_WH_DOWN) },
-    [_LOWER] =   { ENCODER_CCW_CW(KC_VOLD, KC_VOLU), ENCODER_CCW_CW(KC_MS_WH_UP, KC_MS_WH_DOWN) },
-    [_RAISE] =   { ENCODER_CCW_CW(KC_VOLD, KC_VOLU), ENCODER_CCW_CW(KC_MS_WH_UP, KC_MS_WH_DOWN) },
-    [_MOUSE] =   { ENCODER_CCW_CW(KC_VOLD, KC_VOLU), ENCODER_CCW_CW(KC_MS_WH_UP, KC_MS_WH_DOWN) },
-    [4] =   { ENCODER_CCW_CW(KC_VOLD, KC_VOLU), ENCODER_CCW_CW(KC_MS_WH_UP, KC_MS_WH_DOWN) },
-    [5] =   { ENCODER_CCW_CW(KC_VOLD, KC_VOLU), ENCODER_CCW_CW(KC_MS_WH_UP, KC_MS_WH_DOWN) },
-    [6] =   { ENCODER_CCW_CW(KC_VOLD, KC_VOLU), ENCODER_CCW_CW(KC_MS_WH_UP, KC_MS_WH_DOWN) },
-    [7] =   { ENCODER_CCW_CW(KC_VOLD, KC_VOLU), ENCODER_CCW_CW(KC_MS_WH_UP, KC_MS_WH_DOWN) },
-    [8] =   { ENCODER_CCW_CW(KC_VOLD, KC_VOLU), ENCODER_CCW_CW(KC_MS_WH_UP, KC_MS_WH_DOWN) },
-    [9] =   { ENCODER_CCW_CW(KC_VOLD, KC_VOLU), ENCODER_CCW_CW(KC_MS_WH_UP, KC_MS_WH_DOWN) }
+    [_QWERTY] =  { ENCODER_CCW_CW(KC_VOLU, KC_VOLD), ENCODER_CCW_CW(KC_MS_WH_UP, KC_MS_WH_DOWN) },
+    [_LOWER] =   { ENCODER_CCW_CW(KC_VOLU, KC_VOLD), ENCODER_CCW_CW(KC_MS_WH_UP, KC_MS_WH_DOWN) },
+    [_RAISE] =   { ENCODER_CCW_CW(KC_VOLU, KC_VOLD), ENCODER_CCW_CW(KC_MS_WH_UP, KC_MS_WH_DOWN) },
+    [_MOUSE] =   { ENCODER_CCW_CW(KC_VOLU, KC_VOLD), ENCODER_CCW_CW(KC_MS_WH_UP, KC_MS_WH_DOWN) },
+    [4] =   { ENCODER_CCW_CW(KC_VOLU, KC_VOLD), ENCODER_CCW_CW(KC_MS_WH_UP, KC_MS_WH_DOWN) },
+    [5] =   { ENCODER_CCW_CW(KC_VOLU, KC_VOLD), ENCODER_CCW_CW(KC_MS_WH_UP, KC_MS_WH_DOWN) },
+    [6] =   { ENCODER_CCW_CW(KC_VOLU, KC_VOLD), ENCODER_CCW_CW(KC_MS_WH_UP, KC_MS_WH_DOWN) },
+    [7] =   { ENCODER_CCW_CW(KC_VOLU, KC_VOLD), ENCODER_CCW_CW(KC_MS_WH_UP, KC_MS_WH_DOWN) },
+    [8] =   { ENCODER_CCW_CW(KC_VOLU, KC_VOLD), ENCODER_CCW_CW(KC_MS_WH_UP, KC_MS_WH_DOWN) },
+    [9] =   { ENCODER_CCW_CW(KC_VOLU, KC_VOLD), ENCODER_CCW_CW(KC_MS_WH_UP, KC_MS_WH_DOWN) }
 };
 //#endif
 #endif
@@ -210,17 +231,23 @@ layer_state_t layer_state_set_user(layer_state_t state) {
 
 #endif
 
-//    rgblight_enable();
-#ifdef RGBLIGHT_ENABLE
 void keyboard_post_init_user(void) {
-    // Enable the LED layers
-    rgblight_layers = my_rgb_layers;
-}
-//    rgblight_layers = my_rgb_layers;
-//    rgblight_enable_noeeprom(); // Enables RGB, without saving settings
-//    rgblight_sethsv_noeeprom_cyan();
-//    rgblight_mode_noeeprom(RGBLIGHT_MODE_STATIC_LIGHT);
+#ifdef CONSOLE_ENABLE
+    debug_enable=true;
+    debug_matrix=true;
+    debug_keyboard=true;
+    debug_mouse=true;
+#else
+    debug_enable=false;
+    debug_matrix=false;
+    debug_keyboard=false;
+    debug_mouse=false;
 #endif
+#ifdef RGBLIGHT_ENABLE
+     rgblight_layers = my_rgb_layers;
+#endif
+}
+//    rgblight_enable();
 
 #ifdef OLED_ENABLE
 
