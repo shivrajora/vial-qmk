@@ -1,5 +1,5 @@
 {
-  "keyboard_name": "Dactyl-Manuform (5x7_track)",
+  "keyboard_name": "Dactyl-Manuform (6x7_cy_track)",
   "manufacturer": "wylderbuilds",
   "maintainer": "qmk",
   "bootloader": "rp2040",
@@ -959,14 +959,14 @@
                 {"label": "r1c2", "matrix": [1, 2], "x": 71, "y": 0},
                 {"label": "r8c9", "matrix": [8, 2], "x": 72, "y": 0},
                 {"label": "r8c10", "matrix": [8, 3], "x": 73, "y": 0},
-                {"label": "r0c0", "matrix": [0, 0], "x": 74, "y": 0},
-                {"label": "r0c1", "matrix": [0, 1], "x": 75, "y": 0},
+                {"label": "r0c0", "matrix": [0, 3], "x": 74, "y": 0},
+                {"label": "r0c1", "matrix": [0, 2], "x": 75, "y": 0},
                 {"label": "r7c7", "matrix": [7, 0], "x": 76, "y": 0},
                 {"label": "r0c7", "matrix": [0, 7], "x": 77, "y": 0},
-                {"label": "r0c2", "matrix": [0, 2], "x": 78, "y": 0},
+                {"label": "r0c2", "matrix": [0, 1], "x": 78, "y": 0},
                 {"label": "r7c8", "matrix": [7, 1], "x": 79, "y": 0},
                 {"label": "r0c6", "matrix": [0, 6], "x": 80, "y": 0},
-                {"label": "r0c3", "matrix": [0, 3], "x": 81, "y": 0},
+                {"label": "r0c3", "matrix": [0, 0], "x": 81, "y": 0},
                 {"label": "r7c10", "matrix": [7, 3], "x": 82, "y": 0},
                 {"label": "r7c9", "matrix": [7, 2], "x": 83, "y": 0}
             ]
