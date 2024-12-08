@@ -25,8 +25,11 @@
 #include "config.h"
 #include "print.h"
 #include "gpio.h"
+#include <lib/lib8tion/lib8tion.h>
 
 static uint8_t self_test_result = 0;
+
+float int_degree = 65535.0 / 360.0;
 
 #define SELF_TEST_FAILED ((self_test_result & 0x0F) != 0x0F)
 
@@ -189,6 +192,25 @@ report_pmw3610_t pmw3610_read_burst(void) {
 
     data.dx = TOINT16((buf[PMW3610_X_L_POS] + ((buf[PMW3610_XY_H_POS] & 0xF0) << 4)),12);
     data.dy = TOINT16((buf[PMW3610_Y_L_POS] + ((buf[PMW3610_XY_H_POS] & 0x0F) << 8)),12);
+
+#if (PMW3610_ANGLE > 0)
+    int16_t angle = (int16_t)PMW3610_ANGLE;
+
+    if (angle < 0) {
+        angle = angle + 360;
+    }
+
+    uint16_t theta = (uint16_t) (angle * int_degree);
+
+    int16_t sin_result = sin16(theta);
+    int16_t cos_result = cos16(theta);
+
+    int16_t new_dx = (int16_t) ((data.dx * cos_result) / 32767) + ((data.dy * sin_result) / 32767);
+    int16_t new_dy = (int16_t) ((-data.dx * sin_result) / 32767)  + ((data.dy * cos_result) / 32767);
+
+    data.dx = (int8_t)new_dx;
+    data.dy = (int8_t)new_dy;
+#endif
     // data.dx = convert_twoscomp(buf[1]);
     // data.dy = convert_twoscomp(buf[2]);
 

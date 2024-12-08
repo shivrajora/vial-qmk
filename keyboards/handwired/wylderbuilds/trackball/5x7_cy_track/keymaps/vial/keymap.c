@@ -4,7 +4,7 @@
 
 #include QMK_KEYBOARD_H
 #include "trackball.h"
-#include "5x7_cy_track.h"
+#include "6x7_cy_track.h"
 
 #define _QWERTY 0
 #define _LOWER 1
