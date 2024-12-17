@@ -15,7 +15,7 @@
 
 #define USE_SERIAL
 //#define SPLIT_HAND_PIN      GP26  // high = left, low = right
-//#define	SPLIT_HAND_PIN_LOW_IS_LEFT
+#define	SPLIT_HAND_PIN_LOW_IS_LEFT
 //#define SPLIT_HAND_MATRIX_GRID GP9, GP8
 //#define MASTER_RIGHT
 //#define MASTER_LEFT
@@ -36,9 +36,9 @@
 
 #define MATRIX_ROW_PINS { GP2, GP3, GP8, GP4, GP13, GP9, GP14 }
 #define MATRIX_COL_PINS { GP1, GP10, GP11, GP12, GP7, GP6, GP5, GP19 }
-#define DIODE_DIRECTION ROW2COL
+// #define DIODE_DIRECTION ROW2COL
 
-//#define DIODE_DIRECTION COL2ROW
+#define DIODE_DIRECTION COL2ROW
 
 #define SPI_DRIVER SPID0
 #define SPI_SCK_PIN GP22
@@ -86,8 +86,8 @@
 //// OLED Pins and Driver
 #ifdef OLED_ENABLE
 #define I2C_DRIVER I2CD1
-#define I2C1_SDA_PIN GP24
-#define I2C1_SCL_PIN GP25
+#define I2C1_SDA_PIN GP26
+#define I2C1_SCL_PIN GP27
 // OLED Options
 #define SPLIT_OLED_ENABLE
 #define SPLIT_WPM_ENABLE
