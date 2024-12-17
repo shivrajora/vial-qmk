@@ -59,13 +59,13 @@
 //#define PMW3360_LIFTOFF_DISTANCE 0x03 //default 0x02, 2mm liftoff distance
 //
 //#include "config_common.h"
-// Basic Config
+#define SPLIT_LAYER_STATE_ENABLE
 #define SPLIT_POINTING_ENABLE
 //#define ROTATIONAL_TRANSFORM_ANGLE  -25
 //#define PMW33XX_CS_PIN GP21
 //#define POINTING_DEVICE_CS_PIN GP21
 
-//#define SPLIT_TRANSACTION_IDS_KB RPC_ID_KB_CONFIG_SYNC
+#define SPLIT_TRANSACTION_IDS_KB RPC_ID_KB_CONFIG_SYNC
 
 //#define CHARYBDIS_MINIMUM_DEFAULT_DPI 600
 //#define CHARYBDIS_MAX_DEFAULT_DPI_MULTIPLIER 0x08
@@ -95,7 +95,7 @@
 #define NOP_FUDGE 0.4  // may not be needed if ws driver loaded
 #endif
 
-//#define SPLIT_MODS_ENABLE
+#define SPLIT_MODS_ENABLE
 
 #ifdef OLED_ENABLE
 #define I2C_DRIVER I2CD0
