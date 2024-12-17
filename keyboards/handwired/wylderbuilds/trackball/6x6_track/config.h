@@ -32,10 +32,10 @@
 /* key matrix size */
 // Columns are doubled-up
 #define MATRIX_ROWS 14
-#define MATRIX_COLS 8
+#define MATRIX_COLS 6
 
 #define MATRIX_ROW_PINS { GP2, GP3, GP8, GP4, GP13, GP9, GP14 }
-#define MATRIX_COL_PINS { GP1, GP10, GP11, GP12, GP7, GP6, GP5, GP19 }
+#define MATRIX_COL_PINS { GP1, GP10, GP11, GP12, GP7, GP6}
 // #define DIODE_DIRECTION ROW2COL
 
 #define DIODE_DIRECTION COL2ROW
