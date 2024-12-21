@@ -6,7 +6,7 @@
 #include "trackball.h"
 #include "5x6_cy_track.h"
 #include "print.h"
-#include <lib/lib8tion/lib8tion.h>
+
 
 #define _QWERTY 0
 #define _LOWER 1
@@ -144,17 +144,7 @@ void pointing_device_init_user(void) {
 }
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-    int16_t angle = -25;
 
-    if (angle < 0) {
-        angle = angle + 360;
-    }
-
-    uint16_t theta = (uint16_t) angle / 360.0 * 32768;
-
-    int16_t result = sin16(theta);
-    int16_t cos_result = cos16(theta);
-    uprintf("angle %d: sin %d, cos %d\n", angle, result / 3276, cos_result / 3276);
 //    theta = 16384;
 //    result = sin16(theta);
 //    uprintf("angle 16384: %f\n", result / 32768);

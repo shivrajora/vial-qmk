@@ -49,6 +49,14 @@
 #    endif
 #endif
 
+#ifndef PMW3610_ANGLE
+#    ifdef ROTATIONAL_TRANSFORM_ANGLE
+#        define PMW3610_ANGLE ROTATIONAL_TRANSFORM_ANGLE
+#    else
+#        define PMW3610_ANGLE 0
+#    endif
+#endif
+
 typedef struct {
     int8_t dx;
     int8_t dy;
