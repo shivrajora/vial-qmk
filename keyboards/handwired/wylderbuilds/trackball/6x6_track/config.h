@@ -15,7 +15,7 @@
 
 #define USE_SERIAL
 //#define SPLIT_HAND_PIN      GP26  // high = left, low = right
-// #define	SPLIT_HAND_PIN_LOW_IS_LEFT
+#define	SPLIT_HAND_PIN_LOW_IS_LEFT
 //#define SPLIT_HAND_MATRIX_GRID GP9, GP8
 //#define MASTER_RIGHT
 //#define MASTER_LEFT
@@ -131,4 +131,5 @@
 #define LOCKING_RESYNC_ENABLE
 // Enables This makes it easier for fast typists to use dual-function keys
 #define PERMISSIVE_HOLD
+#define TAPPING_TOGGLE 2
 // End of Basic Config
